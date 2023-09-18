@@ -4,6 +4,8 @@
  */
 package org.centrale.objet.WoE;
 
+import java.util.Objects;
+
 /**
  *
  * @author alex4
@@ -67,5 +69,32 @@ public class Point2D {
         
         return dist;
     }
+
+    @Override
+    public String toString() {
+        return "Point2D{" + "x=" + x + ", y=" + y + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x,y);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj){
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()){
+            return false;
+        }
+        
+        
+        Point2D p = (Point2D) obj;
+        
+        return x == p.x && Objects.equals(y, p.y);
+    }
+    
+    
             
 }
