@@ -22,7 +22,7 @@ public class Monstre {
         this.ptPar = ptPar;
         this.pageAtt = pageAtt;
         this.pagePar = pagePar;
-        this.pos = pos;
+        this.pos = new Point2D(pos);
     }
     
     public Monstre(Monstre m){
@@ -31,7 +31,7 @@ public class Monstre {
         this.ptPar = m.ptPar;
         this.pageAtt = m.pageAtt;
         this.pagePar = m.pagePar;
-        this.pos = m.pos;
+        this.pos = new Point2D(m.pos);
     }
 
     public Monstre() {
@@ -83,7 +83,7 @@ public class Monstre {
     }
 
     public void setPos(Point2D pos) {
-        this.pos = pos;
+        this.pos = new Point2D(pos);
     }
     
     public void deplace() {
@@ -95,7 +95,7 @@ public class Monstre {
         return "Monstre{" + "ptVie=" + ptVie + ", degAtt=" + degAtt + ", ptPar=" + ptPar + ", pageAtt=" + pageAtt + ", pagePar=" + pagePar + ", pos=" + pos + '}';
     }
     
-    public String affiche() {
-        return this.toString();
+    public void affiche() {
+        System.out.println(this.toString());
     }
 }

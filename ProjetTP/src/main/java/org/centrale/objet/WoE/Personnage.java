@@ -26,7 +26,7 @@ public class Personnage {
         this.pageAtt = pageAtt;
         this.pagePar = pagePar;
         this.distAttMax = distAttMax;
-        this.pos = pos;
+        this.pos = new Point2D(pos);
     }
     
     public Personnage(Personnage perso){
@@ -37,7 +37,7 @@ public class Personnage {
         this.pageAtt = perso.pageAtt;
         this.pagePar = perso.pagePar;
         this.distAttMax = perso.distAttMax;
-        this.pos = perso.pos;
+        this.pos = new Point2D(perso.pos);
     }
 
     public Personnage() {
@@ -105,7 +105,7 @@ public class Personnage {
     }
 
     public void setPos(Point2D pos) {
-        this.pos = pos;
+        this.pos = new Point2D(pos);
     }
     
     public void deplace() {
@@ -117,8 +117,8 @@ public class Personnage {
         return "Personnage{" + "nom=" + nom + ", ptVie=" + ptVie + ", degAtt=" + degAtt + ", ptPar=" + ptPar + ", pageAtt=" + pageAtt + ", pagePar=" + pagePar + ", distAttMax=" + distAttMax + ", pos=" + pos + '}';
     }
     
-    public String affiche() {
-        return this.toString();
+    void affiche() {
+        System.out.println(this.toString());
     }
     
     
