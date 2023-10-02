@@ -61,7 +61,7 @@ public class Point2D {
         this.x = x;
         this.y = y;              
     }
-    
+    /** méthode permettant de calculer la distance entre deux points*/
     public double distance(Point2D p){
         int dx = this.x - p.getX();
         int dy = this.y - p.getY();
@@ -72,7 +72,7 @@ public class Point2D {
 
     @Override
     public String toString() {
-        return "Point2D{" + "x=" + x + ", y=" + y + '}';
+        return  "x=" + x + ", y=" + y ;
     }
 
     @Override

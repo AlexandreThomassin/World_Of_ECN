@@ -1,38 +1,30 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package org.centrale.objet.WoE;
 
 import java.util.Random;
 
-/**
- *
- * @author alex4
- */
-public class Archer extends Personnage {
-    private Projectile fleche;
-
-    public Archer(String nom, int ptVie, int degAtt, int ptPar, int pageAtt, int pagePar, int distAttMax, Point2D pos,Projectile p) {
+public class Guerrier extends Personnage implements Combat{
+    private Projectile caillous;
+    public Guerrier(String nom, int ptVie, int degAtt, int ptPar, int pageAtt, int pagePar, int distAttMax, Point2D pos,Projectile p) {
         super(nom, ptVie, degAtt, ptPar, pageAtt, pagePar, distAttMax, pos);
-        this.fleche=new Projectile(p);
+        this.caillous=new Projectile(p);
     }
 
-    public Archer(Archer a) {
-        super(a);
+    public Guerrier(Guerrier p) {
+        super(p);
     }
 
-    public Archer() {
+    public Guerrier() {
+        super();
     }
-    public Archer(int numeroArcher) {
-       super();
-       setNom("Archer n "+numeroArcher);
-       setDegAtt(25);
-       setPageAtt(75);
-       setDistAttMax(5);
-       setPagePar(40);
-       setPtPar(5);
-       fleche=new Projectile("flèche",5);
+    public Guerrier(int numeroGuerrier){
+        super();
+        setNom("Guerrier n "+numeroGuerrier);
+        setDegAtt(20);
+        setPageAtt(75);
+        setDistAttMax(1);
+        setPagePar(50);
+        setPtPar(5);
+        caillous=new Projectile("caillous",6);
     }
     public void combattre(Creature c){
         System.out.println(this.getNom()+" décide d'attaquer "+c.getNom());
@@ -67,9 +59,9 @@ public class Archer extends Personnage {
             System.out.println("Attaque à distance !");
             resAttaquant=jetDeAttaquant.nextInt(100)+1;
             System.out.println("L'attaquant fait un jet de dé et obtient "+resAttaquant);
-            System.out.println("Nombre de projectile avant attaque : "+this.fleche.getNombre());
+            System.out.println("Nombre de projectile avant attaque : "+this.caillous.getNombre());
             System.out.println("L'attaquant retire un projectile !");
-            this.fleche.setNombre(this.fleche.getNombre()-1);
+            this.caillous.setNombre(this.caillous.getNombre()-1);
             if(resAttaquant<=this.getPageAtt()){
                 System.out.println("L'attaque est réussie ! Le tir réalisé par l'attaquant " +
                         "est inférieur à son pageAtt "+resAttaquant+"<= "+getPageAtt());
@@ -81,7 +73,6 @@ public class Archer extends Personnage {
             System.out.println("Le défenseur est trop loin de l'attaquant !");
         }
         System.out.println("Points de vie du défenseur après attaque : "+c.getPtVie());
-        System.out.println("Nombre de projectile après attaque : "+this.fleche.getNombre());
+        System.out.println("Nombre de projectile après attaque : "+this.caillous.getNombre());
     }
-    
 }

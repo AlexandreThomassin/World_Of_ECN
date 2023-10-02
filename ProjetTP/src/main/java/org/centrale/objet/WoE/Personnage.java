@@ -4,123 +4,59 @@
  */
 package org.centrale.objet.WoE;
 
+import java.util.Random;
+
 /**
  *
  * @author alex4
+ * @author moufid
+ *
  */
-public class Personnage {
-    public String nom;
-    public int ptVie;
-    public int degAtt;
-    public int ptPar;
-    public int pageAtt;
-    public int pagePar;
-    public int distAttMax;
-    public Point2D pos;
+public abstract class Personnage extends Creature{
 
+    /** distance d'attaque maximale*/
+    private int distAttMax;
+
+    /**constructeur 1
+     * @param nom c'est le nom à donner au personnage
+     * etc...*/
     public Personnage(String nom, int ptVie, int degAtt, int ptPar, int pageAtt, int pagePar, int distAttMax, Point2D pos) {
-        this.nom = nom;
-        this.ptVie = ptVie;
-        this.degAtt = degAtt;
-        this.ptPar = ptPar;
-        this.pageAtt = pageAtt;
-        this.pagePar = pagePar;
+        super(nom,ptVie, degAtt, ptPar, pageAtt, pagePar, pos);
         this.distAttMax = distAttMax;
-        this.pos = new Point2D(pos);
+
     }
-    
+    /**constructeur 2
+     * @param perso c'est pour faire une copie du personnage*/
     public Personnage(Personnage perso){
-        this.nom = perso.nom;
-        this.ptVie = perso.ptVie;
-        this.degAtt = perso.degAtt;
-        this.ptPar = perso.ptPar;
-        this.pageAtt = perso.pageAtt;
-        this.pagePar = perso.pagePar;
+        super(perso);
         this.distAttMax = perso.distAttMax;
-        this.pos = new Point2D(perso.pos);
+
     }
 
     public Personnage() {
-    
+        super();
     }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public int getPtVie() {
-        return ptVie;
-    }
-
-    public int getDegAtt() {
-        return degAtt;
-    }
-
-    public int getPtPar() {
-        return ptPar;
-    }
-
-    public int getPageAtt() {
-        return pageAtt;
-    }
-
-    public int getPagePar() {
-        return pagePar;
-    }
+    /** getters et setters des différents attributs*/
 
     public int getDistAttMax() {
         return distAttMax;
-    }
-
-    public Point2D getPos() {
-        return pos;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public void setPtVie(int ptVie) {
-        this.ptVie = ptVie;
-    }
-
-    public void setDegAtt(int degAtt) {
-        this.degAtt = degAtt;
-    }
-
-    public void setPtPar(int ptPar) {
-        this.ptPar = ptPar;
-    }
-
-    public void setPageAtt(int pageAtt) {
-        this.pageAtt = pageAtt;
-    }
-
-    public void setPagePar(int pagePar) {
-        this.pagePar = pagePar;
     }
 
     public void setDistAttMax(int distAttMax) {
         this.distAttMax = distAttMax;
     }
 
-    public void setPos(Point2D pos) {
-        this.pos = new Point2D(pos);
-    }
-    
-    public void deplace() {
-        this.pos.translate(1, 1);
-    }
 
+    /** On surcharge toString() afin d'afficher notre personnage proprement*/
     @Override
     public String toString() {
-        return "Personnage{" + "nom=" + nom + ", ptVie=" + ptVie + ", degAtt=" + degAtt + ", ptPar=" + ptPar + ", pageAtt=" + pageAtt + ", pagePar=" + pagePar + ", distAttMax=" + distAttMax + ", pos=" + pos + '}';
+        return "Personnage{" + "nom=" + this.getNom() + ", ptVie=" + getPtVie() + ", degAtt=" + getDegAtt() + ", ptPar=" + getPtPar() + ", pageAtt=" + getPageAtt() + ", pagePar=" + getPagePar() + ", distAttMax=" + distAttMax + ", pos=" + getPos() + '}';
     }
     
-    void affiche() {
+    public void affiche() {
         System.out.println(this.toString());
     }
-    
+
     
     
     

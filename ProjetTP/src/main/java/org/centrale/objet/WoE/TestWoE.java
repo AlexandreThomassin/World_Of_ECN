@@ -15,7 +15,7 @@ public class TestWoE {
         World monde = new World();
         
         monde.creerMondeAlea();
-        
-        System.out.println("Robin : " + monde.robin.pos + "\nPeon : " + monde.peon.pos + "\nBugs : " + monde.bugs.pos);
+        monde.tourDeJeu();
+
     }
 }

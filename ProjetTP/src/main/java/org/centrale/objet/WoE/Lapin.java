@@ -8,10 +8,10 @@ package org.centrale.objet.WoE;
  *
  * @author alex4
  */
-public class Lapin extends Monstre {
+public abstract class Lapin extends Monstre {
 
-    public Lapin(String nom, int ptVie, int degAtt, int ptPar, int pageAtt, int pagePar, int distAttMax, Point2D pos) {
-        super(nom, ptVie, degAtt, ptPar, pageAtt, pagePar, distAttMax, pos);
+    public Lapin(String nom, int ptVie, int degAtt, int ptPar, int pageAtt, int pagePar, Point2D pos) {
+        super(nom, ptVie, degAtt, ptPar, pageAtt, pagePar, pos);
     }
 
     public Lapin(Lapin l) {
@@ -19,6 +19,14 @@ public class Lapin extends Monstre {
     }
 
     public Lapin() {
+    }
+    public Lapin(int numeroLapin){
+        super();
+        setNom("Lapin n "+numeroLapin);
+        setDegAtt(0);
+        setPageAtt(0);
+        setPagePar(10);
+        setPtPar(2);
     }
     
 }
