@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class World {
     /**Tailledu monde*/
-    private static final int n= 300;
+    private static final int n= 50;
     /**Modélise le nombre de chaque catégorie de créatures (34 pour Archer voir boucle for)*/
     private static final int nb= 33;
     /**notre Archer Robin*/
@@ -31,12 +31,14 @@ public class World {
     private Loup wolfie;
     private LinkedList<Creature> creatures;
     private ArrayList<Point2D> positionsOccupees;
+    private ArrayList<PotionSoin> positionsPotions;
+
 
     /**Constructeur qui initialise les objets de notre monde*/
     public World() {
         creatures=new LinkedList<Creature>();
         positionsOccupees=new ArrayList<Point2D>();
-
+        positionsPotions=new ArrayList<PotionSoin>();
     }
 
     /**Cette methode initialiserPositions() a pour but de répartir les différents
@@ -50,6 +52,9 @@ public class World {
      * et on affecte les positions initiales a ces dernieres sans aucun probleme
      */
     public void initialiserPositions() {
+        /**On commence par positionner quelques potions*/
+        positionsPotions.add(new PotionSoin());
+        positionsPotions.get(0).setPos(new Point2D(1,1));
         Random genX = new Random();
         Random genY = new Random();
         Random genCreature = new Random();
@@ -63,7 +68,7 @@ public class World {
         int x;
         int y;
         /**Positionner nos Archers*/
-        for (int i = 0; i < (nb+1)*500; i++) {
+        for (int i = 0; i < (nb+1); i++) {
             creatures.add(new Archer(i+1));
             do {
                 x = genX.nextInt(n);
@@ -73,7 +78,7 @@ public class World {
             positionsOccupees.add(creatures.get(creatures.size()-1).getPos());
         }
         /**Positionner nos Guerriers*/
-        for (int i = 0; i < nb*500; i++) {
+        for (int i = 0; i < nb; i++) {
             creatures.add(new Guerrier(i+1));
             do {
                 x = genX.nextInt(n);
@@ -83,7 +88,7 @@ public class World {
             positionsOccupees.add(creatures.get(creatures.size()-1).getPos());
         }
         /**Positionner nos Loups*/
-        for (int i = 0; i < nb*500; i++) {
+        for (int i = 0; i < nb; i++) {
             creatures.add(new Loup(i+1));
             do {
                 x = genX.nextInt(n);
@@ -132,6 +137,7 @@ public class World {
         long finN=System.nanoTime();
         System.out.println("Temps de calcul de totalPtVie : "+(finN-debutN)+" ns");
         System.out.println("Total de ptVie à la fin du tour: "+totalptVie);
+        positionsOccupees.get(0).setPosition(1,1);
 
     }
     

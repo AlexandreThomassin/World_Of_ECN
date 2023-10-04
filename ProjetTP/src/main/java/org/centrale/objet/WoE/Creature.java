@@ -121,4 +121,8 @@ public abstract class Creature{
         System.out.println(nom+" est désormais à la position x= "+getPos().getX()+", y = "+getPos().getY()+"\n");
     }
     public abstract void combattre(Creature c);
+    public void recupererPotionVie(int ptVie){
+        this.ptVie+=ptVie;
+    }
+
 }
