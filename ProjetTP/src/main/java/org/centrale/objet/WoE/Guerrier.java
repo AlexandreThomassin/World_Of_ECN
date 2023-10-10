@@ -2,7 +2,7 @@ package org.centrale.objet.WoE;
 
 import java.util.Random;
 
-public class Guerrier extends Personnage implements Combat{
+public class Guerrier extends Personnage {
     private Projectile caillous;
     public Guerrier(String nom, int ptVie, int degAtt, int ptPar, int pageAtt, int pagePar, int distAttMax, Point2D pos,Projectile p) {
         super(nom, ptVie, degAtt, ptPar, pageAtt, pagePar, distAttMax, pos);

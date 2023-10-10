@@ -1,5 +1,7 @@
 package org.centrale.objet.WoE;
 
+import java.util.Random;
+
 public class Objet {
     public String getNom() {
         return nom;
@@ -19,7 +21,17 @@ public class Objet {
 
     private String nom;
     private Point2D pos;
+
+    /**Afin de simplifier, on part du principe qu'on positionne nos objets
+     * sans tester la présence d'autres objets sur la même case, le cas echeant
+     * l'objet antecedant sera ecrase
+     */
     public Objet(){
+        int x,y;
+        Random gen = new Random();
+            x = gen.nextInt(50);
+            y = gen.nextInt(50);
+            this.setPos(new Point2D(x,y));
     }
 
 }

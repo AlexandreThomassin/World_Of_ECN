@@ -3,7 +3,7 @@ package org.centrale.objet.WoE;
 import java.util.ArrayList;
 import java.util.Random;
 
-public abstract class Creature{
+public abstract class Creature implements Deplaceable{
     /** nom de la creature*/
     private String nom;
     /** points de vie de la creature*/

@@ -54,57 +54,34 @@ public class World {
     public void initialiserPositions() {
         /**On commence par positionner quelques potions*/
         positionsPotions.add(new PotionSoin());
-        positionsPotions.get(0).setPos(new Point2D(1,1));
-        Random genX = new Random();
-        Random genY = new Random();
-        Random genCreature = new Random();
-        int nbArcher;
-        int nbGuerrier;
-        int nbLoup;
-        nbArcher = genCreature.nextInt(20);
-        nbGuerrier = genCreature.nextInt(20);
-        nbLoup = genCreature.nextInt(20);
 
+        Random gen = new Random();
         int x;
         int y;
-        /**Positionner nos Archers*/
-        for (int i = 0; i < (nb+1); i++) {
-            creatures.add(new Archer(i+1));
+
+        /**Positionner nos Creatures*/
+        for (int i = 0; i < (3*nb+1); i++) {
+            if(i>=0&&i<nb+1){
+                creatures.add(new Archer(i+1));
+            }else if(i>=nb+1&&i<2*nb+1){
+                creatures.add(new Guerrier(i+1));
+            }else{
+                creatures.add(new Loup(i+1));
+            }
             do {
-                x = genX.nextInt(n);
-                y = genY.nextInt(n);
+                x = gen.nextInt(n);
+                y = gen.nextInt(n);
                 creatures.get(creatures.size()-1).setPos(x, y);
             } while (positionsOccupees.contains(creatures.get(creatures.size()-1).getPos()));
             positionsOccupees.add(creatures.get(creatures.size()-1).getPos());
         }
-        /**Positionner nos Guerriers*/
-        for (int i = 0; i < nb; i++) {
-            creatures.add(new Guerrier(i+1));
-            do {
-                x = genX.nextInt(n);
-                y = genY.nextInt(n);
-                creatures.get(creatures.size()-1).setPos(x, y);
-            } while (positionsOccupees.contains(creatures.get(creatures.size()-1).getPos()));
-            positionsOccupees.add(creatures.get(creatures.size()-1).getPos());
-        }
-        /**Positionner nos Loups*/
-        for (int i = 0; i < nb; i++) {
-            creatures.add(new Loup(i+1));
-            do {
-                x = genX.nextInt(n);
-                y = genY.nextInt(n);
-                creatures.get(creatures.size()-1).setPos(x, y);
-            } while (positionsOccupees.contains(creatures.get(creatures.size()-1).getPos()));
-            positionsOccupees.add(creatures.get(creatures.size()-1).getPos());
-        }
-        System.out.println("Nombre total de créatures : "+creatures.size()+"\n"+"Archers : "+nbArcher
-        +"\n"+"Guerriers : "+nbGuerrier +"\n"+"Loups : "+nbLoup +"\n");
+        System.out.println("Nombre total de créatures : "+creatures.size());
 
     }
-    /**Méthode de création de notre monde là où tous les événements se déroulent*/
+    /**Méthode de creation de notre monde la ou tous les événements se déroulent*/
     public void creerMondeAlea() {
-        /**On va d'abord positionner nos objets de façon à ce qu'ils ne seraient
-         * pas sur la même case
+        /**On va d'abord positionner nos creature de facon a ce qu'ils ne seraient
+         * pas sur la meme case
          */
         initialiserPositions();
         /**ptVie total*/
@@ -112,16 +89,13 @@ public class World {
         for (int i = 0; i < creatures.size(); i++) {
             /**On calcule le total de ptVie au départ*/
             totalPtVie+=creatures.get(i).getPtVie();
-            /*System.out.println("Position initiale de " +
-                    creatures.get(i).getNom() + " : "
-                    + creatures.get(i).getPos()+"\n");*/
         }
+        System.out.println("Total de ptVie au départ: "+totalPtVie);
 
         /** Les objets effectuent leur premier déplacement*/
-        /*for (int i = 0; i < creatures.size(); i++) {
+        for (int i = 0; i < creatures.size(); i++) {
             creatures.get(i).deplace(positionsOccupees);
-        }*/
-        System.out.println("Total de ptVie au départ: "+totalPtVie);
+        }
 
     }
     void tourDeJeu(){
