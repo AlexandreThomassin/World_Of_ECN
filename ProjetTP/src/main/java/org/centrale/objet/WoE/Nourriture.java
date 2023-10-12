@@ -38,7 +38,8 @@ public class Nourriture extends Objet implements Utilisable {
             isActive = true;
             
             try {
-                Field attribut = c.getClass().getDeclaredField("degAtt");
+                
+                Field attribut = c.getClass().getDeclaredField(attrChanged);
                 attribut.setAccessible(true);
                 try {
                     
@@ -54,13 +55,13 @@ public class Nourriture extends Objet implements Utilisable {
             
             
         } else {
-            // On décréemente la durée à chaque utilisation
+            // On décrémente la durée à chaque utilisation
             duree = duree - 1;
             
             // Si la durée arrive à 0 on inverse les effets de la nourriture pour revenir à la normale
             if (duree == 0){
                 try {
-                Field attribut = c.getClass().getDeclaredField("degAtt");
+                Field attribut = c.getClass().getDeclaredField(attrChanged);
                 attribut.setAccessible(true);
                 try {
                     
