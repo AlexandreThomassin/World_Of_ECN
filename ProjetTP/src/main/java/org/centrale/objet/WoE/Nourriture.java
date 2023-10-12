@@ -33,16 +33,16 @@ public class Nourriture extends Objet implements Utilisable {
         this.isActive = n.isActive;
     }
     
-    public void utilise(){
+    public void utilise(Creature c){
         if (!isActive){
             isActive = true;
             
             try {
-                Field attribut = getClass().getDeclaredField("degAtt");
+                Field attribut = c.getClass().getDeclaredField("degAtt");
                 attribut.setAccessible(true);
                 try {
                     
-                    attribut.setInt(this, attribut.getInt(this) + value);
+                    attribut.setInt(c, attribut.getInt(this) + value);
                     
                 } catch (IllegalAccessException e) {
                     System.out.println("L'attribut " + attrChanged + " n'est pas accessible !");
@@ -60,11 +60,11 @@ public class Nourriture extends Objet implements Utilisable {
             // Si la durée arrive à 0 on inverse les effets de la nourriture pour revenir à la normale
             if (duree == 0){
                 try {
-                Field attribut = getClass().getDeclaredField("degAtt");
+                Field attribut = c.getClass().getDeclaredField("degAtt");
                 attribut.setAccessible(true);
                 try {
                     
-                    attribut.setInt(this, attribut.getInt(this) - value);
+                    attribut.setInt(c, attribut.getInt(this) - value);
                     
                 } catch (IllegalAccessException e) {
                     System.out.println("L'attribut " + attrChanged + " n'est pas accessible !");
