@@ -34,6 +34,17 @@ public class Archer extends Personnage {
        setPtPar(5);
        fleche=new Projectile("flèche",5);
     }
+    /**Par defaut quand on creer un archer pour un joueur*/
+    public Archer(String nom){
+        super();
+        setNom(nom);
+        setDegAtt(20);
+        setPageAtt(75);
+        setDistAttMax(1);
+        setPagePar(50);
+        setPtPar(5);
+        fleche=new Projectile("flèche",6);
+    }
     public void combattre(Creature c){
         System.out.println(this.getNom()+" décide d'attaquer "+c.getNom());
         Random jetDeAttaquant = new Random();

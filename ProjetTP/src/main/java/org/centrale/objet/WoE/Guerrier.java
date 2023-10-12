@@ -26,6 +26,17 @@ public class Guerrier extends Personnage {
         setPtPar(5);
         caillous=new Projectile("caillous",6);
     }
+    /**Par defaut quand on creer un guerrier pour un joueur*/
+    public Guerrier(String nom){
+        super();
+        setNom(nom);
+        setDegAtt(20);
+        setPageAtt(75);
+        setDistAttMax(1);
+        setPagePar(50);
+        setPtPar(5);
+        caillous=new Projectile("caillous",6);
+    }
     public void combattre(Creature c){
         System.out.println(this.getNom()+" décide d'attaquer "+c.getNom());
         Random jetDeAttaquant = new Random();

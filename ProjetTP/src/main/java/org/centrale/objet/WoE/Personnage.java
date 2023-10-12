@@ -16,6 +16,8 @@ public abstract class Personnage extends Creature{
 
     /** distance d'attaque maximale*/
     private int distAttMax;
+    /**attribut pour distinguer les personnages jouables*/
+    private boolean jouable;
 
     /**constructeur 1
      * @param nom c'est le nom à donner au personnage

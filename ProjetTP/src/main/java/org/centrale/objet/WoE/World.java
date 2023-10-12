@@ -29,16 +29,16 @@ public class World {
     private Archer guillaumeT;
     private Guerrier grosBill;
     private Loup wolfie;
-    private LinkedList<Creature> creatures;
+    private ArrayList<Creature> creatures;
     private ArrayList<Point2D> positionsOccupees;
-    private ArrayList<PotionSoin> positionsPotions;
+    private ArrayList<Objet> objets;
 
 
     /**Constructeur qui initialise les objets de notre monde*/
     public World() {
-        creatures=new LinkedList<Creature>();
+        creatures=new ArrayList<Creature>();
         positionsOccupees=new ArrayList<Point2D>();
-        positionsPotions=new ArrayList<PotionSoin>();
+        objets=new ArrayList<Objet>();
     }
 
     /**Cette methode initialiserPositions() a pour but de répartir les différents
@@ -53,7 +53,8 @@ public class World {
      */
     public void initialiserPositions() {
         /**On commence par positionner quelques potions*/
-        positionsPotions.add(new PotionSoin());
+        PotionSoin potion=new PotionSoin();
+        potion.initialiserPosition(objets);
 
         Random gen = new Random();
         int x;
@@ -100,19 +101,11 @@ public class World {
     }
     void tourDeJeu(){
         System.out.println("Un tour de jeu démarre !");
-        creatures.get(0).combattre(creatures.get(15));
-        /**ptVie total*/
-        int totalptVie=0;
-        long debutN=System.nanoTime();
-        for (int i = 0; i < creatures.size(); i++) {
-            /**On calcule le total de ptVie après combat*/
-            totalptVie+=creatures.get(i).getPtVie();
-        }
-        long finN=System.nanoTime();
-        System.out.println("Temps de calcul de totalPtVie : "+(finN-debutN)+" ns");
-        System.out.println("Total de ptVie à la fin du tour: "+totalptVie);
-        positionsOccupees.get(0).setPosition(1,1);
-
+        //creatures.get(0).combattre(creatures.get(15));
+        Joueur joueur=new Joueur("Alexandre");
+        joueur.initialiserPosition(positionsOccupees);
+        System.out.println("Un joueur vient d'être créé, nom : "+joueur.getNom());
+        joueur.faireChoix(positionsOccupees,creatures);
     }
     
 }

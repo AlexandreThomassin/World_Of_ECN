@@ -13,7 +13,6 @@ import java.util.ArrayList;
 public class TestWoE {
     public static void main(String[] args) {
         World monde = new World();
-        
         monde.creerMondeAlea();
         monde.tourDeJeu();
 

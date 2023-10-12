@@ -1,5 +1,6 @@
 package org.centrale.objet.WoE;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Objet {
@@ -14,6 +15,9 @@ public class Objet {
     public void setPos(Point2D pos) {
         this.pos = pos;
     }
+    public void setPos(int x, int y) {
+        this.pos = new Point2D(x,y);
+    }
 
     public Point2D getPos() {
         return pos;
@@ -27,11 +31,16 @@ public class Objet {
      * l'objet antecedant sera ecrase
      */
     public Objet(){
+    }
+    public void initialiserPosition(ArrayList<Objet> objets){
+        Random gen= new Random();
         int x,y;
-        Random gen = new Random();
+        do {
             x = gen.nextInt(50);
             y = gen.nextInt(50);
-            this.setPos(new Point2D(x,y));
+            this.setPos(x,y);
+        } while (objets.contains(this));
+        objets.add(this);
     }
 
 }
