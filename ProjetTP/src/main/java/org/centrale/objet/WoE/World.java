@@ -114,21 +114,27 @@ public class World {
     
     public void chargementPartie(String name){
         
+        // On définit nos délémiteurs
         String delimiters = " ,.;";
         StringTokenizer tokenizer;
         
         try {
             String line;
+            // On crée notre buffer pour lire le fichier
             BufferedReader fichier = new BufferedReader(new FileReader(name));
             
+            // On lit la première ligne
             line = fichier.readLine();
             while (line != null){
                 
+                // On sépare les éléments contenus dans la ligne
                 tokenizer = new StringTokenizer(line, delimiters);
                 
+            
                 if (tokenizer.hasMoreTokens()){
                     String mot = tokenizer.nextToken();
                     
+                    // On passe le mot en lettre minuscule pour éviter les mot mal écrit
                     mot = mot.toLowerCase();
                     
                     switch(mot){
@@ -139,7 +145,7 @@ public class World {
                                 System.out.println("Sauvegarde incorrecte : Taille du monde manquante");
                             }
                             
-                        case "Archer":
+                        case "archer":
                             try {
                                 Archer a = new Archer(tokenizer);
                                 this.creatures.add(a);
@@ -149,7 +155,7 @@ public class World {
                                 System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un archer");
                             }
                         
-                        case "Guerrier":
+                        case "guerrier":
                             try {
                                 Guerrier g = new Guerrier(tokenizer);
                                 this.creatures.add(g);
@@ -159,7 +165,7 @@ public class World {
                                 System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un guerrier");
                             }
                             
-                        case "Paysan":
+                        case "paysan":
                             try {
                                 Paysan p;
                                 p = new Paysan(tokenizer);
@@ -170,7 +176,7 @@ public class World {
                                 System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un guerrier");
                             }
                             
-                        case "Loup":
+                        case "loup":
                             try {
                                 Loup l;
                                 l = new Loup(tokenizer);
@@ -181,7 +187,7 @@ public class World {
                                 System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un guerrier");
                             }
                             
-                        case "Lapin":
+                        case "lapin":
                             try {
                                 Lapin l;
                                 l = new Lapin(tokenizer);
