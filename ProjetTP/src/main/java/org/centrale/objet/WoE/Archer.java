@@ -4,7 +4,9 @@
  */
 package org.centrale.objet.WoE;
 
+import static java.lang.Integer.parseInt;
 import java.util.Random;
+import java.util.StringTokenizer;
 
 /**
  *
@@ -20,6 +22,23 @@ public class Archer extends Personnage {
 
     public Archer(Archer a) {
         super(a);
+    }
+    
+    public Archer(StringTokenizer tokenizer){
+        super();
+        setNom(tokenizer.nextToken());
+        setPtVie(parseInt(tokenizer.nextToken()));
+        setDegAtt(parseInt(tokenizer.nextToken()));
+        setPtPar(parseInt(tokenizer.nextToken()));
+        setPageAtt(parseInt(tokenizer.nextToken()));
+        setPagePar(parseInt(tokenizer.nextToken()));
+        setDistAttMax(parseInt(tokenizer.nextToken()));
+        this.fleche = new Projectile("fleche", parseInt(tokenizer.nextToken()));
+        int x = parseInt(tokenizer.nextToken());
+        int y = parseInt(tokenizer.nextToken());
+        Point2D pos = new Point2D(x, y);
+        
+        setPos(pos);
     }
 
     public Archer() {

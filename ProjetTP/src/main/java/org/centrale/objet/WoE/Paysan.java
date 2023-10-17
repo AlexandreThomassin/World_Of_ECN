@@ -4,11 +4,14 @@
  */
 package org.centrale.objet.WoE;
 
+import static java.lang.Integer.parseInt;
+import java.util.StringTokenizer;
+
 /**
  *
  * @author alex4
  */
-public abstract class Paysan extends Personnage {
+public class Paysan extends Personnage {
 
     public Paysan(String nom, int ptVie, int degAtt, int ptPar, int pageAtt, int pagePar, int distAttMax, Point2D pos) {
         super(nom, ptVie, degAtt, ptPar, pageAtt, pagePar, distAttMax, pos);
@@ -31,4 +34,23 @@ public abstract class Paysan extends Personnage {
 
     }
     
+    public Paysan(StringTokenizer tokenizer){
+        super();
+        setNom(tokenizer.nextToken());
+        setPtVie(parseInt(tokenizer.nextToken()));
+        setDegAtt(parseInt(tokenizer.nextToken()));
+        setPtPar(parseInt(tokenizer.nextToken()));
+        setPageAtt(parseInt(tokenizer.nextToken()));
+        setPagePar(parseInt(tokenizer.nextToken()));
+        setDistAttMax(parseInt(tokenizer.nextToken()));
+        int x = parseInt(tokenizer.nextToken());
+        int y = parseInt(tokenizer.nextToken());
+        Point2D pos = new Point2D(x, y);
+        
+        setPos(pos);
+    }
+    
+    public void combattre(Creature c){
+        System.out.println("Les paysans ne se battent pas. Passage à la créature suivante");
+    }
 }

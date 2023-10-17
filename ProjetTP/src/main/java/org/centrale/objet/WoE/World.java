@@ -7,6 +7,10 @@ package org.centrale.objet.WoE;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import static java.lang.Integer.parseInt;
+import java.util.StringTokenizer;
 
 /**
  *
@@ -15,7 +19,7 @@ import java.util.ArrayList;
  */
 public class World {
     /**Tailledu monde*/
-    private static final int n= 50;
+    private static int n= 50;
     /**Modélise le nombre de chaque catégorie de créatures (34 pour Archer voir boucle for)*/
     private static final int nb= 33;
     /**notre Archer Robin*/
@@ -108,4 +112,95 @@ public class World {
         joueur.faireChoix(positionsOccupees,creatures);
     }
     
+    public void chargementPartie(String name){
+        
+        String delimiters = " ,.;";
+        StringTokenizer tokenizer;
+        
+        try {
+            String line;
+            BufferedReader fichier = new BufferedReader(new FileReader(name));
+            
+            line = fichier.readLine();
+            while (line != null){
+                
+                tokenizer = new StringTokenizer(line, delimiters);
+                
+                if (tokenizer.hasMoreTokens()){
+                    String mot = tokenizer.nextToken();
+                    
+                    mot = mot.toLowerCase();
+                    
+                    switch(mot){
+                        case "largeur":
+                            try {
+                                this.n = parseInt(tokenizer.nextToken());
+                            } catch (Exception e){
+                                System.out.println("Sauvegarde incorrecte : Taille du monde manquante");
+                            }
+                            
+                        case "Archer":
+                            try {
+                                Archer a = new Archer(tokenizer);
+                                this.creatures.add(a);
+                                this.positionsOccupees.add(a.getPos());
+                                
+                            } catch (Exception e){
+                                System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un archer");
+                            }
+                        
+                        case "Guerrier":
+                            try {
+                                Guerrier g = new Guerrier(tokenizer);
+                                this.creatures.add(g);
+                                this.positionsOccupees.add(g.getPos());
+                                
+                            } catch (Exception e){
+                                System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un guerrier");
+                            }
+                            
+                        case "Paysan":
+                            try {
+                                Paysan p;
+                                p = new Paysan(tokenizer);
+                                this.creatures.add(p);
+                                this.positionsOccupees.add(p.getPos());
+                                
+                            } catch (Exception e){
+                                System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un guerrier");
+                            }
+                            
+                        case "Loup":
+                            try {
+                                Loup l;
+                                l = new Loup(tokenizer);
+                                this.creatures.add(l);
+                                this.positionsOccupees.add(l.getPos());
+                                
+                            } catch (Exception e){
+                                System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un guerrier");
+                            }
+                            
+                        case "Lapin":
+                            try {
+                                Lapin l;
+                                l = new Lapin(tokenizer);
+                                this.creatures.add(l);
+                                this.positionsOccupees.add(l.getPos());
+                                
+                            } catch (Exception e){
+                                System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un guerrier");
+                            }
+                    }
+                }
+                
+                line = fichier.readLine();
+            }
+            
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        
+    }
 }

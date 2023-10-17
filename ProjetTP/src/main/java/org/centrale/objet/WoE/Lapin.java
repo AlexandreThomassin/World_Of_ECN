@@ -4,11 +4,14 @@
  */
 package org.centrale.objet.WoE;
 
+import static java.lang.Integer.parseInt;
+import java.util.StringTokenizer;
+
 /**
  *
  * @author alex4
  */
-public abstract class Lapin extends Monstre {
+public class Lapin extends Monstre {
 
     public Lapin(String nom, int ptVie, int degAtt, int ptPar, int pageAtt, int pagePar, Point2D pos) {
         super(nom, ptVie, degAtt, ptPar, pageAtt, pagePar, pos);
@@ -27,6 +30,24 @@ public abstract class Lapin extends Monstre {
         setPageAtt(0);
         setPagePar(10);
         setPtPar(2);
+    }
+    
+    public Lapin(StringTokenizer tokenizer){
+        super();
+        setNom(tokenizer.nextToken());
+        setPtVie(parseInt(tokenizer.nextToken()));
+        setDegAtt(parseInt(tokenizer.nextToken()));
+        setPtPar(parseInt(tokenizer.nextToken()));
+        setPageAtt(parseInt(tokenizer.nextToken()));
+        setPagePar(parseInt(tokenizer.nextToken()));
+        int x = parseInt(tokenizer.nextToken());
+        int y = parseInt(tokenizer.nextToken());
+        Point2D pos = new Point2D(x, y);
+        
+        setPos(pos);
+    }
+    
+    public void combattre(Creature c){
     }
     
 }

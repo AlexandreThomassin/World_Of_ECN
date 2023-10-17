@@ -1,6 +1,8 @@
 package org.centrale.objet.WoE;
 
+import static java.lang.Integer.parseInt;
 import java.util.Random;
+import java.util.StringTokenizer;
 
 public class Guerrier extends Personnage {
     private Projectile caillous;
@@ -36,6 +38,23 @@ public class Guerrier extends Personnage {
         setPagePar(50);
         setPtPar(5);
         caillous=new Projectile("caillous",6);
+    }
+    
+    public Guerrier(StringTokenizer tokenizer){
+        super();
+        setNom(tokenizer.nextToken());
+        setPtVie(parseInt(tokenizer.nextToken()));
+        setDegAtt(parseInt(tokenizer.nextToken()));
+        setPtPar(parseInt(tokenizer.nextToken()));
+        setPageAtt(parseInt(tokenizer.nextToken()));
+        setPagePar(parseInt(tokenizer.nextToken()));
+        setDistAttMax(parseInt(tokenizer.nextToken()));
+        this.caillous = new Projectile("caillous", parseInt(tokenizer.nextToken()));
+        int x = parseInt(tokenizer.nextToken());
+        int y = parseInt(tokenizer.nextToken());
+        Point2D pos = new Point2D(x, y);
+        
+        setPos(pos);
     }
     public void combattre(Creature c){
         System.out.println(this.getNom()+" décide d'attaquer "+c.getNom());
