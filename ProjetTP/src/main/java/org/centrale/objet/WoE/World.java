@@ -197,6 +197,17 @@ public class World {
                             } catch (Exception e){
                                 System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un guerrier");
                             }
+                            
+                        case "potionsoin":
+                            try {
+                                PotionSoin p;
+                                p = new PotionSoin(tokenizer);
+                                this.objets.add(p);
+                                this.positionsOccupees.add(p.getPos());
+                                
+                            } catch (Exception e){
+                                System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un guerrier");
+                            }
                     }
                 }
                 
