@@ -4,6 +4,7 @@
  */
 package org.centrale.objet.WoE;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -38,12 +39,14 @@ public class Archer extends Personnage {
     public Archer(String nom){
         super();
         setNom(nom);
-        setDegAtt(20);
+        setDegAtt(25);
         setPageAtt(75);
-        setDistAttMax(1);
-        setPagePar(50);
+        setDistAttMax(10);
+        setPagePar(40);
         setPtPar(5);
-        fleche=new Projectile("flèche",6);
+        fleche=new Projectile("flèche",5);
+        setInventaire(new ArrayList<Objet>());
+        setEffets(new ArrayList<>());
     }
     public void combattre(Creature c){
         System.out.println(this.getNom()+" décide d'attaquer "+c.getNom());

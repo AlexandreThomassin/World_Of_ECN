@@ -1,5 +1,7 @@
 package org.centrale.objet.WoE;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Random;
 
 public class Guerrier extends Personnage {
@@ -32,10 +34,12 @@ public class Guerrier extends Personnage {
         setNom(nom);
         setDegAtt(20);
         setPageAtt(75);
-        setDistAttMax(1);
+        setDistAttMax(10);
         setPagePar(50);
         setPtPar(5);
         caillous=new Projectile("caillous",6);
+        setInventaire(new ArrayList<Objet>());
+        setEffets(new ArrayList<>());
     }
     public void combattre(Creature c){
         System.out.println(this.getNom()+" décide d'attaquer "+c.getNom());
