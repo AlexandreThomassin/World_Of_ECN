@@ -1,9 +1,10 @@
-package org.centrale.objet.WoE;
+    package org.centrale.objet.WoE;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class Joueur {
     public String getNom() {
@@ -36,6 +37,27 @@ public class Joueur {
             personnage=new Archer(nomPersonnage);
         }
     }
+    
+    public Joueur(StringTokenizer tokenizer){
+        this.nom = tokenizer.nextToken();
+        if (tokenizer.hasMoreTokens()){
+            String choix = tokenizer.nextToken();
+            System.out.println(choix);
+            if (choix.equals("Guerrier")){
+                this.personnage = new Guerrier(tokenizer);
+            } else if(choix.equals("Archer")) {
+                this.personnage = new Archer(tokenizer);
+            }
+            else {
+                System.out.println("La classe sauvegardée pour le joueur est incorrecte");
+            }
+        }
+    }
+
+    public Personnage getPersonnage() {
+        return personnage;
+    }
+    
     public void initialiserPosition(ArrayList<Point2D> positionsOccupees){
         Random gen= new Random();
         int x,y;

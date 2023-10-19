@@ -222,6 +222,22 @@ public class World {
                             }
                             break;
                             
+                        case "joueur":
+                            // On charge le joueur
+                            try {
+                                Joueur j = new Joueur(tokenizer);
+                                this.creatures.add(j.getPersonnage());
+                                this.positionsOccupees.add(j.getPersonnage().getPos());
+
+                            } catch (Exception e){
+                                System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un joueur");
+                            }                                    
+                            
+                            // On charge ensuite l'inventaire
+                            
+                            
+                            break;
+                            
                         default:
                             System.out.println("La classe " + mot + " n'est pas reconnu");
                     }
