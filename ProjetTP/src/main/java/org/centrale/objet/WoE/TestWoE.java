@@ -16,6 +16,7 @@ public class TestWoE {
         monde.chargementPartie("Sauvegarde-WoE.txt");
 //        monde.creerMondeAlea();
         monde.sauvegardePartie("test.txt");
+        monde.chargementPartie("test.txt");
         monde.tourDeJeu();
 
     }
