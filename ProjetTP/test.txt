@@ -11,8 +11,3 @@ Lapin 03 30 20 20 40 10 23 23
 PotionSoin 25 18 18
 PotionSoin 100 4 20
 PotionSoin 48 1 19
-Joueur bob Guerrier bob 150 10 9 90 70 1 4 12 12
- 
-
-
-

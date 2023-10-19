@@ -19,4 +19,8 @@ public class PotionSoin extends Objet{
         Point2D pos = new Point2D(x,y);
         setPos(pos);
     }
+    
+    public String toSave(){
+        return "PotionSoin " + this.ptVie + " " + this.getPos().getX() + " " + this.getPos().getY();
+    }
 }

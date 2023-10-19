@@ -40,6 +40,7 @@ public class World {
     private ArrayList<Creature> creatures;
     private ArrayList<Point2D> positionsOccupees;
     private ArrayList<Objet> objets;
+    
 
 
     /**Constructeur qui initialise les objets de notre monde*/
@@ -230,7 +231,7 @@ public class World {
                             // On charge le joueur
                             try {
                                 Joueur j = new Joueur(tokenizer);
-                                this.creatures.add(j.getPersonnage());
+                                
                                 this.positionsOccupees.add(j.getPersonnage().getPos());
 
                             } catch (Exception e){
@@ -269,27 +270,32 @@ public class World {
             
             
         }
-        
-        
+       
         BufferedWriter bufferedWriter = null;
         
         try {
             bufferedWriter = new BufferedWriter(new FileWriter(nom));
             
+            // On sauvegarde les dimensions du monde
             bufferedWriter.write("Largeur " + this.n);
             bufferedWriter.newLine();
             bufferedWriter.write("Hauteur " + this.n);
             bufferedWriter.newLine();
             
+            // On sauvegarde d'abord toutes les créatures
             for (Creature c: this.creatures){
                 bufferedWriter.write(c.toSave());
                 bufferedWriter.newLine();
             }
             
+            // On sauvegarde ensuite tous les objets
             for (Objet o: this.objets){
                 bufferedWriter.write(o.toSave());
                 bufferedWriter.newLine();
             }
+            
+            // On finit par sauvegarder le joueur et son inventaire
+            
             
             
         }

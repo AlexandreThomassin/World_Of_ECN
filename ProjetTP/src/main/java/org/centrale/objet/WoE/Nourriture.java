@@ -78,4 +78,9 @@ public class Nourriture extends Objet implements Utilisable {
         }
     }
     
+    
+    public String toSave(){
+        return "";
+    }
+    
 }
