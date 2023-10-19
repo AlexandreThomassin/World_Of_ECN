@@ -40,4 +40,8 @@ public class Loup extends Monstre{
     public void combattre(Creature c){
     }
 
+    public String toSave(){
+        return "Loup " + this.getNom() + " " + this.getPtVie() + " " + this.getDegAtt() + " " + this.getPtPar() + " "
+                + this.getPageAtt() + " " + this.getPagePar() + " " + this.getPos().getX() + " " + this.getPos().getY();
+    }
 }

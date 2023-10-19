@@ -124,5 +124,7 @@ public abstract class Creature implements Deplaceable{
     public void recupererPotionVie(int ptVie){
         this.ptVie+=ptVie;
     }
+    
+    public abstract String toSave();
 
 }

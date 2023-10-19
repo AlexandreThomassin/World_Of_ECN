@@ -53,4 +53,11 @@ public class Paysan extends Personnage {
     public void combattre(Creature c){
         System.out.println("Les paysans ne se battent pas. Passage à la créature suivante");
     }
+    
+    public String toSave(){
+        return "Paysan " + this.getNom() + " " + this.getPtVie() + " " + this.getDegAtt() + " " + this.getPtPar() + " " 
+                + this.getPageAtt() + " " + this.getPagePar() + " " + this.getDistAttMax() + " "  
+                + this.getPos().getX() + " " + this.getPos().getY();
+    }
+    
 }

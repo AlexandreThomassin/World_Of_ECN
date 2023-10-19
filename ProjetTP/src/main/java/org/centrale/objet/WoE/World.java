@@ -8,7 +8,11 @@ import java.util.LinkedList;
 import java.util.Random;
 import java.util.ArrayList;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import static java.lang.Integer.parseInt;
 import java.util.StringTokenizer;
 
@@ -134,7 +138,7 @@ public class World {
                 // On sépare les éléments contenus dans la ligne
                 tokenizer = new StringTokenizer(line, delimiters);
                 
-            
+                
                 if (tokenizer.hasMoreTokens()){
                     String mot = tokenizer.nextToken();
                     
@@ -254,4 +258,65 @@ public class World {
         
         
     }
+
+
+    public void sauvegardePartie(String nom){
+        //On enlève les espaces inutiles
+        nom = nom.trim();
+        
+        if (nom.isEmpty()){
+            // Si le nom du fichier de sauvegarde est vide, on en crée un automatiquement
+            
+            
+        }
+        
+        
+        BufferedWriter bufferedWriter = null;
+        
+        try {
+            bufferedWriter = new BufferedWriter(new FileWriter(nom));
+            
+            bufferedWriter.write("Largeur " + this.n);
+            bufferedWriter.newLine();
+            bufferedWriter.write("Hauteur " + this.n);
+            bufferedWriter.newLine();
+            
+            for (Creature c: this.creatures){
+                bufferedWriter.write(c.toSave());
+                bufferedWriter.newLine();
+            }
+            
+            for (Objet o: this.objets){
+                bufferedWriter.write(o.toSave());
+                bufferedWriter.newLine();
+            }
+            
+            
+        }
+        
+        catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+        
+        finally {
+            try {
+                if (bufferedWriter != null){
+                    bufferedWriter.flush();
+                    bufferedWriter.close();
+                }
+            }
+            catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+        
+        
+    }
+    
+    
+
+
 }

@@ -105,4 +105,10 @@ public class Guerrier extends Personnage {
         System.out.println("Points de vie du défenseur après attaque : "+c.getPtVie());
         System.out.println("Nombre de projectile après attaque : "+this.caillous.getNombre());
     }
+    
+    public String toSave(){
+        return "Guerrier " + this.getNom() + " " + this.getPtVie() + " " + this.getDegAtt() + " " + this.getPtPar() + " " 
+                + this.getPageAtt() + " " + this.getPagePar() + " " + this.getDistAttMax() + " " + this.caillous.getNombre() + " " 
+                + this.getPos().getX() + " " + this.getPos().getY();
+    }
 }

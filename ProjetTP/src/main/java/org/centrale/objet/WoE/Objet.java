@@ -3,7 +3,7 @@ package org.centrale.objet.WoE;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Objet {
+public abstract class Objet {
     public String getNom() {
         return nom;
     }
@@ -43,4 +43,6 @@ public class Objet {
         objets.add(this);
     }
 
+    public abstract String toSave();
+    
 }

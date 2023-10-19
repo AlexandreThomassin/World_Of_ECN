@@ -114,4 +114,10 @@ public class Archer extends Personnage {
         System.out.println("Nombre de projectile après attaque : "+this.fleche.getNombre());
     }
     
+    public String toSave(){
+        return "Archer " + this.getNom() + " " + this.getPtVie() + " " + this.getDegAtt() + " " + this.getPtPar() + " " 
+                + this.getPageAtt() + " " + this.getPagePar() + " " + this.getDistAttMax() + " " + this.fleche.getNombre() + " " 
+                + this.getPos().getX() + " " + this.getPos().getY();
+    }
+    
 }
