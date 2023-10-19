@@ -44,6 +44,10 @@ public class World {
         positionsOccupees=new ArrayList<Point2D>();
         objets=new ArrayList<Objet>();
     }
+    
+    public ArrayList<Creature> getCreatures() {
+        return creatures;
+    }
 
     /**Cette methode initialiserPositions() a pour but de répartir les différents
      * protagonistes sur notre grille de manière aléatoire et sans aucune collision
@@ -115,7 +119,7 @@ public class World {
     public void chargementPartie(String name){
         
         // On définit nos délémiteurs
-        String delimiters = " ,.;";
+        String delimiters = " ";
         StringTokenizer tokenizer;
         
         try {
@@ -134,8 +138,10 @@ public class World {
                 if (tokenizer.hasMoreTokens()){
                     String mot = tokenizer.nextToken();
                     
+                    
                     // On passe le mot en lettre minuscule pour éviter les mot mal écrit
                     mot = mot.toLowerCase();
+                    System.out.println(mot);
                     
                     switch(mot){
                         case "largeur":
@@ -144,6 +150,7 @@ public class World {
                             } catch (Exception e){
                                 System.out.println("Sauvegarde incorrecte : Taille du monde manquante");
                             }
+                            break;
                             
                         case "archer":
                             try {
@@ -154,6 +161,7 @@ public class World {
                             } catch (Exception e){
                                 System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un archer");
                             }
+                            break;
                         
                         case "guerrier":
                             try {
@@ -164,6 +172,7 @@ public class World {
                             } catch (Exception e){
                                 System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un guerrier");
                             }
+                            break;
                             
                         case "paysan":
                             try {
@@ -173,8 +182,9 @@ public class World {
                                 this.positionsOccupees.add(p.getPos());
                                 
                             } catch (Exception e){
-                                System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un guerrier");
+                                System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un paysan");
                             }
+                            break;
                             
                         case "loup":
                             try {
@@ -184,8 +194,9 @@ public class World {
                                 this.positionsOccupees.add(l.getPos());
                                 
                             } catch (Exception e){
-                                System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un guerrier");
+                                System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un loup");
                             }
+                            break;
                             
                         case "lapin":
                             try {
@@ -195,25 +206,32 @@ public class World {
                                 this.positionsOccupees.add(l.getPos());
                                 
                             } catch (Exception e){
-                                System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un guerrier");
+                                System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un lapin");
                             }
+                            break;
                             
                         case "potionsoin":
                             try {
                                 PotionSoin p;
                                 p = new PotionSoin(tokenizer);
-                                this.objets.add(p);
+                                this.objets.add(p);  
                                 this.positionsOccupees.add(p.getPos());
                                 
                             } catch (Exception e){
-                                System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un guerrier");
+                                System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'une potion de soin");
                             }
+                            break;
+                            
+                        default:
+                            System.out.println("La classe " + mot + " n'est pas reconnu");
                     }
                 }
                 
                 line = fichier.readLine();
             }
+           
             
+            fichier.close();
         } catch(Exception e){
             e.printStackTrace();
         }
