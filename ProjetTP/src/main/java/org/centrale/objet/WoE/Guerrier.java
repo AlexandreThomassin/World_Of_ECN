@@ -1,6 +1,8 @@
 package org.centrale.objet.WoE;
 
 import static java.lang.Integer.parseInt;
+
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.StringTokenizer;
 
@@ -34,10 +36,12 @@ public class Guerrier extends Personnage {
         setNom(nom);
         setDegAtt(20);
         setPageAtt(75);
-        setDistAttMax(1);
+        setDistAttMax(10);
         setPagePar(50);
         setPtPar(5);
         caillous=new Projectile("caillous",6);
+        setInventaire(new ArrayList<Objet>());
+        setEffets(new ArrayList<>());
     }
     
     public Guerrier(StringTokenizer tokenizer){

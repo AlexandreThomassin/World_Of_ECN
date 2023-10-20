@@ -38,7 +38,17 @@ public class World {
     private Guerrier grosBill;
     private Loup wolfie;
     private ArrayList<Creature> creatures;
+
+    public ArrayList<Point2D> getPositionsOccupees() {
+        return positionsOccupees;
+    }
+
     private ArrayList<Point2D> positionsOccupees;
+
+    public ArrayList<Objet> getObjets() {
+        return objets;
+    }
+
     private ArrayList<Objet> objets;
     
 
@@ -66,12 +76,15 @@ public class World {
      */
     public void initialiserPositions() {
         /**On commence par positionner quelques potions*/
-        PotionSoin potion=new PotionSoin();
-        potion.initialiserPosition(objets);
-
+        //PotionSoin potion=new PotionSoin();
+        //potion.initialiserPosition(objets);
         Random gen = new Random();
         int x;
         int y;
+        for (int i = 0; i < (3*nb+1); i++){
+            Nourriture nourriture=new Nourriture(3,5,"degAtt");
+            nourriture.initialiserPosition(objets);
+        }
 
         /**Positionner nos Creatures*/
         for (int i = 0; i < (3*nb+1); i++) {
@@ -98,13 +111,6 @@ public class World {
          * pas sur la meme case
          */
         initialiserPositions();
-        /**ptVie total*/
-        int totalPtVie=0;
-        for (int i = 0; i < creatures.size(); i++) {
-            /**On calcule le total de ptVie au départ*/
-            totalPtVie+=creatures.get(i).getPtVie();
-        }
-        System.out.println("Total de ptVie au départ: "+totalPtVie);
 
         /** Les objets effectuent leur premier déplacement*/
         for (int i = 0; i < creatures.size(); i++) {
@@ -112,13 +118,9 @@ public class World {
         }
 
     }
-    void tourDeJeu(){
-        System.out.println("Un tour de jeu démarre !");
-        //creatures.get(0).combattre(creatures.get(15));
-        Joueur joueur=new Joueur("Alexandre");
-        joueur.initialiserPosition(positionsOccupees);
-        System.out.println("Un joueur vient d'être créé, nom : "+joueur.getNom());
-        joueur.faireChoix(positionsOccupees,creatures);
+    void tourDeJeu(Joueur joueur){
+        joueur.faireChoix(positionsOccupees,creatures,objets);
+        joueur.utiliseEffets();
     }
     
     public void chargementPartie(String name){

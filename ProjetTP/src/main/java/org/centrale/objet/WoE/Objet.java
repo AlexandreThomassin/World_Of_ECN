@@ -25,6 +25,15 @@ public abstract class Objet {
 
     private String nom;
     private Point2D pos;
+    public boolean isUtilisable() {
+        return utilisable;
+    }
+
+    public void setUtilisable(boolean utilisable) {
+        this.utilisable = utilisable;
+    }
+
+    private boolean utilisable;
 
     /**Afin de simplifier, on part du principe qu'on positionne nos objets
      * sans tester la présence d'autres objets sur la même case, le cas echeant

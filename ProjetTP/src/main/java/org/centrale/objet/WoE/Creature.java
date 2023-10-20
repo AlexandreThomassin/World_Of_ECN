@@ -118,7 +118,7 @@ public abstract class Creature implements Deplaceable{
         this.getPos().translate(dx, dy);
         /**On ajoute la nouvelle positions aux positions occupees*/
         positionsOccupees.add(getPos());
-        System.out.println(nom+" est désormais à la position x= "+getPos().getX()+", y = "+getPos().getY()+"\n");
+        System.out.println(nom+" est désormais à la position "+getPos().toString());
     }
     public abstract void combattre(Creature c);
     public void recupererPotionVie(int ptVie){

@@ -65,30 +65,63 @@ public class Joueur {
             x = gen.nextInt(50);
             y = gen.nextInt(50);
             this.personnage.setPos(x,y);
-        } while (positionsOccupees.contains(this.personnage));
+        } while (positionsOccupees.contains(this.personnage.getPos()));
         positionsOccupees.add(this.personnage.getPos());
+        System.out.println(this.getPersonnage().getNom()+" est initialement à la position "+this.getPersonnage().getPos().toString());
     }
-    public void faireChoix(ArrayList<Point2D> positionsOccupees,ArrayList<Creature> creatures){
+    public void faireChoix(ArrayList<Point2D> positionsOccupees,ArrayList<Creature> creatures,
+                           ArrayList<Objet> objets){
         Scanner input = new Scanner(System.in);
-        System.out.println("Vous voulez vous déplacer ou combattre?\n Saisissez 'Combattre'" +
-                "ou 'Se déplacer'");
+        System.out.println("Vous voulez vous déplacer, combattre ou activer un objet de l'inventaire?\n Saisissez 'Combattre'" +
+                "ou 'Se déplacer' ou 'Activer effet'");
         String choix;
+        int choixNumero;
         do {
             choix= input.nextLine();
         }
         while ((!choix.equals("Combattre")&&
-                !choix.equals("Se déplacer"))||choix.isEmpty());
+                !choix.equals("Se déplacer")&&!choix.equals("Activer effet"))||choix.isEmpty());
         if(choix.equals("Combattre")){
-            System.out.println("Choisissez un numéro de créature à combattre entre 0 et 99");
-            int choixNumero;
+            System.out.println("Choisissez un numéro de créature à combattre entre 1 et 100");
+
             do {
                 choix= input.nextLine();
                 choixNumero=Integer.parseInt(choix);
             }
-            while (choixNumero<0||choixNumero>99);
-            personnage.combattre(creatures.get(choixNumero));
-        }else {
+            while (choixNumero<1||choixNumero>100);
+            personnage.combattre(creatures.get(choixNumero-1));
+        }else if(choix.equals("Se déplacer")){
             personnage.deplace(positionsOccupees);
+            personnage.ramasserObjet(objets);
+        }else{
+            System.out.println("Vous avez choisi d'activer un objet de l'inventaire!");
+            if (!personnage.getInventaire().isEmpty()){
+                for(int i=0;i<personnage.getInventaire().size();i++){
+                    System.out.println("Objet n° "+(i+1)+" est de type "
+                            +personnage.getInventaire().get(i).getClass().getSimpleName());
+                }
+                System.out.println("Veuillez choisir un numéro d'objet à utiliser");
+                do {
+                    choix= input.nextLine();
+                    choixNumero=Integer.parseInt(choix);
+                }while(choixNumero<1||choixNumero>personnage.getInventaire().size());
+                System.out.println("Vous avez choisi l'objet numéro "+choixNumero);
+                personnage.getEffets().add((Utilisable) personnage.getInventaire().get(choixNumero-1));
+                personnage.getInventaire().remove(choixNumero-1);
+                System.out.println("List des effets: "+personnage.getEffets().toString());
+            }else{
+                System.out.println("Oups! Votre inventaire est vide!");
+            }
+
+        }
+    }
+    public void utiliseEffets(){
+        if(!getPersonnage().getEffets().isEmpty()){
+            for(Utilisable utilisable:this.getPersonnage().getEffets()){
+                utilisable.utilisePar(this.getPersonnage());
+            }
+        }else{
+            System.out.println("Oups ! Vous n'avez pas d'effets à votre disposition");
         }
     }
 

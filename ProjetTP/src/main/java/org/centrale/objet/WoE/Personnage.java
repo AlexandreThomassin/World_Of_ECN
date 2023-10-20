@@ -4,6 +4,8 @@
  */
 package org.centrale.objet.WoE;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Random;
 
 /**
@@ -18,6 +20,27 @@ public abstract class Personnage extends Creature{
     private int distAttMax;
     /**attribut pour distinguer les personnages jouables*/
     private boolean jouable;
+
+    public ArrayList<Objet> getInventaire() {
+        return inventaire;
+    }
+
+    public void setInventaire(ArrayList<Objet> inventaire) {
+        this.inventaire = inventaire;
+    }
+
+    public void setEffets(Collection<Utilisable> effets) {
+        this.effets = effets;
+    }
+
+    /**inventaire du personnage*/
+    private ArrayList<Objet> inventaire;
+
+    public Collection<Utilisable> getEffets() {
+        return effets;
+    }
+
+    private Collection<Utilisable> effets;
 
     /**constructeur 1
      * @param nom c'est le nom à donner au personnage
@@ -46,6 +69,21 @@ public abstract class Personnage extends Creature{
 
     public void setDistAttMax(int distAttMax) {
         this.distAttMax = distAttMax;
+    }
+    public void ramasserObjet(ArrayList<Objet> objets){
+        for(Objet objet:objets){
+            if(objet.getPos().equals(this.getPos())&&objet.isUtilisable()){
+                System.out.println("Un objet utilisable de type "+objet.getClass().getSimpleName()+" est trouvé !");
+                System.out.println("On va l'ajouter à l'inventaire");
+                inventaire.add(objet);
+                /**On retire l'objet ajoute a l'inventaire de la grille*/
+                objets.remove(objet);
+                break;
+            }else if(objet.getPos().equals(this.getPos())&&!objet.isUtilisable()){
+                System.out.println("Un objet non utilisable de type "+objet.getClass().getSimpleName()+" est trouvé ! " +
+                        "On ne peut pas le ramsser");
+            }
+        }
     }
 
 
