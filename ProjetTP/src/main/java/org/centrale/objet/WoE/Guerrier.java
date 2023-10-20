@@ -1,8 +1,8 @@
 package org.centrale.objet.WoE;
 
-import static java.lang.Integer.parseInt;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Random;
-import java.util.StringTokenizer;
 
 public class Guerrier extends Personnage {
     private Projectile caillous;
@@ -34,27 +34,12 @@ public class Guerrier extends Personnage {
         setNom(nom);
         setDegAtt(20);
         setPageAtt(75);
-        setDistAttMax(1);
+        setDistAttMax(10);
         setPagePar(50);
         setPtPar(5);
         caillous=new Projectile("caillous",6);
-    }
-    
-    public Guerrier(StringTokenizer tokenizer){
-        super();
-        setNom(tokenizer.nextToken());
-        setPtVie(parseInt(tokenizer.nextToken()));
-        setDegAtt(parseInt(tokenizer.nextToken()));
-        setPtPar(parseInt(tokenizer.nextToken()));
-        setPageAtt(parseInt(tokenizer.nextToken()));
-        setPagePar(parseInt(tokenizer.nextToken()));
-        setDistAttMax(parseInt(tokenizer.nextToken()));
-        this.caillous = new Projectile("caillous", parseInt(tokenizer.nextToken()));
-        int x = parseInt(tokenizer.nextToken());
-        int y = parseInt(tokenizer.nextToken());
-        Point2D pos = new Point2D(x, y);
-        
-        setPos(pos);
+        setInventaire(new ArrayList<Objet>());
+        setEffets(new ArrayList<>());
     }
     public void combattre(Creature c){
         System.out.println(this.getNom()+" décide d'attaquer "+c.getNom());
@@ -104,11 +89,5 @@ public class Guerrier extends Personnage {
         }
         System.out.println("Points de vie du défenseur après attaque : "+c.getPtVie());
         System.out.println("Nombre de projectile après attaque : "+this.caillous.getNombre());
-    }
-    
-    public String toSave(){
-        return "Guerrier " + this.getNom() + " " + this.getPtVie() + " " + this.getDegAtt() + " " + this.getPtPar() + " " 
-                + this.getPageAtt() + " " + this.getPagePar() + " " + this.getDistAttMax() + " " + this.caillous.getNombre() + " " 
-                + this.getPos().getX() + " " + this.getPos().getY();
     }
 }

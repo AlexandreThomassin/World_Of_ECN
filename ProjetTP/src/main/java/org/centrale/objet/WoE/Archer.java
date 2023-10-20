@@ -4,9 +4,8 @@
  */
 package org.centrale.objet.WoE;
 
-import static java.lang.Integer.parseInt;
+import java.util.ArrayList;
 import java.util.Random;
-import java.util.StringTokenizer;
 
 /**
  *
@@ -22,23 +21,6 @@ public class Archer extends Personnage {
 
     public Archer(Archer a) {
         super(a);
-    }
-    
-    public Archer(StringTokenizer tokenizer){
-        super();
-        setNom(tokenizer.nextToken());
-        setPtVie(parseInt(tokenizer.nextToken()));
-        setDegAtt(parseInt(tokenizer.nextToken()));
-        setPtPar(parseInt(tokenizer.nextToken()));
-        setPageAtt(parseInt(tokenizer.nextToken()));
-        setPagePar(parseInt(tokenizer.nextToken()));
-        setDistAttMax(parseInt(tokenizer.nextToken()));
-        this.fleche = new Projectile("fleche", parseInt(tokenizer.nextToken()));
-        int x = parseInt(tokenizer.nextToken());
-        int y = parseInt(tokenizer.nextToken());
-        Point2D pos = new Point2D(x, y);
-        
-        setPos(pos);
     }
 
     public Archer() {
@@ -57,12 +39,14 @@ public class Archer extends Personnage {
     public Archer(String nom){
         super();
         setNom(nom);
-        setDegAtt(20);
+        setDegAtt(25);
         setPageAtt(75);
-        setDistAttMax(1);
-        setPagePar(50);
+        setDistAttMax(10);
+        setPagePar(40);
         setPtPar(5);
-        fleche=new Projectile("flèche",6);
+        fleche=new Projectile("flèche",5);
+        setInventaire(new ArrayList<Objet>());
+        setEffets(new ArrayList<>());
     }
     public void combattre(Creature c){
         System.out.println(this.getNom()+" décide d'attaquer "+c.getNom());
@@ -112,12 +96,6 @@ public class Archer extends Personnage {
         }
         System.out.println("Points de vie du défenseur après attaque : "+c.getPtVie());
         System.out.println("Nombre de projectile après attaque : "+this.fleche.getNombre());
-    }
-    
-    public String toSave(){
-        return "Archer " + this.getNom() + " " + this.getPtVie() + " " + this.getDegAtt() + " " + this.getPtPar() + " " 
-                + this.getPageAtt() + " " + this.getPagePar() + " " + this.getDistAttMax() + " " + this.fleche.getNombre() + " " 
-                + this.getPos().getX() + " " + this.getPos().getY();
     }
     
 }

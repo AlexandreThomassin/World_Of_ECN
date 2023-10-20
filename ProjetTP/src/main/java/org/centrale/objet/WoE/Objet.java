@@ -1,6 +1,7 @@
 package org.centrale.objet.WoE;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 
 public abstract class Objet {
@@ -25,6 +26,15 @@ public abstract class Objet {
 
     private String nom;
     private Point2D pos;
+    public boolean isUtilisable() {
+        return utilisable;
+    }
+
+    public void setUtilisable(boolean utilisable) {
+        this.utilisable = utilisable;
+    }
+
+    private boolean utilisable;
 
     /**Afin de simplifier, on part du principe qu'on positionne nos objets
      * sans tester la présence d'autres objets sur la même case, le cas echeant
@@ -36,8 +46,8 @@ public abstract class Objet {
         Random gen= new Random();
         int x,y;
         do {
-            x = gen.nextInt(50);
-            y = gen.nextInt(50);
+            x = gen.nextInt(4);
+            y = gen.nextInt(4);
             this.setPos(x,y);
         } while (objets.contains(this));
         objets.add(this);

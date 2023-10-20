@@ -7,14 +7,6 @@ package org.centrale.objet.WoE;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.ArrayList;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import static java.lang.Integer.parseInt;
-import java.util.StringTokenizer;
 
 /**
  *
@@ -23,9 +15,9 @@ import java.util.StringTokenizer;
  */
 public class World {
     /**Tailledu monde*/
-    private static int n= 50;
+    private static final int n= 4;
     /**Modélise le nombre de chaque catégorie de créatures (34 pour Archer voir boucle for)*/
-    private static final int nb= 33;
+    private static final int nb= 3;
     /**notre Archer Robin*/
     private Archer robin;
     /**notre Paysan Peon*/
@@ -38,9 +30,18 @@ public class World {
     private Guerrier grosBill;
     private Loup wolfie;
     private ArrayList<Creature> creatures;
+
+    public ArrayList<Point2D> getPositionsOccupees() {
+        return positionsOccupees;
+    }
+
     private ArrayList<Point2D> positionsOccupees;
+
+    public ArrayList<Objet> getObjets() {
+        return objets;
+    }
+
     private ArrayList<Objet> objets;
-    
 
 
     /**Constructeur qui initialise les objets de notre monde*/
@@ -48,10 +49,6 @@ public class World {
         creatures=new ArrayList<Creature>();
         positionsOccupees=new ArrayList<Point2D>();
         objets=new ArrayList<Objet>();
-    }
-    
-    public ArrayList<Creature> getCreatures() {
-        return creatures;
     }
 
     /**Cette methode initialiserPositions() a pour but de répartir les différents
@@ -66,12 +63,15 @@ public class World {
      */
     public void initialiserPositions() {
         /**On commence par positionner quelques potions*/
-        PotionSoin potion=new PotionSoin();
-        potion.initialiserPosition(objets);
-
+        //PotionSoin potion=new PotionSoin();
+        //potion.initialiserPosition(objets);
         Random gen = new Random();
         int x;
         int y;
+        for (int i = 0; i < (3*nb+1); i++){
+            Nourriture nourriture=new Nourriture(3,5,"degAtt");
+            nourriture.initialiserPosition(objets);
+        }
 
         /**Positionner nos Creatures*/
         for (int i = 0; i < (3*nb+1); i++) {
@@ -98,13 +98,6 @@ public class World {
          * pas sur la meme case
          */
         initialiserPositions();
-        /**ptVie total*/
-        int totalPtVie=0;
-        for (int i = 0; i < creatures.size(); i++) {
-            /**On calcule le total de ptVie au départ*/
-            totalPtVie+=creatures.get(i).getPtVie();
-        }
-        System.out.println("Total de ptVie au départ: "+totalPtVie);
 
         /** Les objets effectuent leur premier déplacement*/
         for (int i = 0; i < creatures.size(); i++) {
@@ -112,217 +105,9 @@ public class World {
         }
 
     }
-    void tourDeJeu(){
-        System.out.println("Un tour de jeu démarre !");
-        //creatures.get(0).combattre(creatures.get(15));
-        Joueur joueur=new Joueur("Alexandre");
-        joueur.initialiserPosition(positionsOccupees);
-        System.out.println("Un joueur vient d'être créé, nom : "+joueur.getNom());
-        joueur.faireChoix(positionsOccupees,creatures);
+    void tourDeJeu(Joueur joueur){
+        joueur.faireChoix(positionsOccupees,creatures,objets);
+        joueur.utiliseEffets();
     }
     
-    public void chargementPartie(String name){
-        
-        // On définit nos délémiteurs
-        String delimiters = " ";
-        StringTokenizer tokenizer;
-        
-        try {
-            String line;
-            // On crée notre buffer pour lire le fichier
-            BufferedReader fichier = new BufferedReader(new FileReader(name));
-            
-            // On lit la première ligne
-            line = fichier.readLine();
-            while (line != null){
-                
-                // On sépare les éléments contenus dans la ligne
-                tokenizer = new StringTokenizer(line, delimiters);
-                
-                
-                if (tokenizer.hasMoreTokens()){
-                    String mot = tokenizer.nextToken();
-                    
-                    
-                    // On passe le mot en lettre minuscule pour éviter les mot mal écrit
-                    mot = mot.toLowerCase();
-                    System.out.println(mot);
-                    
-                    switch(mot){
-                        case "largeur":
-                            try {
-                                this.n = parseInt(tokenizer.nextToken());
-                            } catch (Exception e){
-                                System.out.println("Sauvegarde incorrecte : Taille du monde manquante");
-                            }
-                            break;
-                            
-                        case "archer":
-                            try {
-                                Archer a = new Archer(tokenizer);
-                                this.creatures.add(a);
-                                this.positionsOccupees.add(a.getPos());
-                                
-                            } catch (Exception e){
-                                System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un archer");
-                            }
-                            break;
-                        
-                        case "guerrier":
-                            try {
-                                Guerrier g = new Guerrier(tokenizer);
-                                this.creatures.add(g);
-                                this.positionsOccupees.add(g.getPos());
-                                
-                            } catch (Exception e){
-                                System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un guerrier");
-                            }
-                            break;
-                            
-                        case "paysan":
-                            try {
-                                Paysan p;
-                                p = new Paysan(tokenizer);
-                                this.creatures.add(p);
-                                this.positionsOccupees.add(p.getPos());
-                                
-                            } catch (Exception e){
-                                System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un paysan");
-                            }
-                            break;
-                            
-                        case "loup":
-                            try {
-                                Loup l;
-                                l = new Loup(tokenizer);
-                                this.creatures.add(l);
-                                this.positionsOccupees.add(l.getPos());
-                                
-                            } catch (Exception e){
-                                System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un loup");
-                            }
-                            break;
-                            
-                        case "lapin":
-                            try {
-                                Lapin l;
-                                l = new Lapin(tokenizer);
-                                this.creatures.add(l);
-                                this.positionsOccupees.add(l.getPos());
-                                
-                            } catch (Exception e){
-                                System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un lapin");
-                            }
-                            break;
-                            
-                        case "potionsoin":
-                            try {
-                                PotionSoin p;
-                                p = new PotionSoin(tokenizer);
-                                this.objets.add(p);  
-                                this.positionsOccupees.add(p.getPos());
-                                
-                            } catch (Exception e){
-                                System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'une potion de soin");
-                            }
-                            break;
-                            
-                        case "joueur":
-                            // On charge le joueur
-                            try {
-                                Joueur j = new Joueur(tokenizer);
-                                
-                                this.positionsOccupees.add(j.getPersonnage().getPos());
-
-                            } catch (Exception e){
-                                System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un joueur");
-                            }                                    
-                            
-                            // On charge ensuite l'inventaire
-                            
-                            
-                            break;
-                            
-                        default:
-                            System.out.println("La classe " + mot + " n'est pas reconnu");
-                    }
-                }
-                
-                line = fichier.readLine();
-            }
-           
-            
-            fichier.close();
-        } catch(Exception e){
-            e.printStackTrace();
-        }
-        
-        
-    }
-
-
-    public void sauvegardePartie(String nom){
-        //On enlève les espaces inutiles
-        nom = nom.trim();
-        
-        if (nom.isEmpty()){
-            // Si le nom du fichier de sauvegarde est vide, on en crée un automatiquement
-            
-            
-        }
-       
-        BufferedWriter bufferedWriter = null;
-        
-        try {
-            bufferedWriter = new BufferedWriter(new FileWriter(nom));
-            
-            // On sauvegarde les dimensions du monde
-            bufferedWriter.write("Largeur " + this.n);
-            bufferedWriter.newLine();
-            bufferedWriter.write("Hauteur " + this.n);
-            bufferedWriter.newLine();
-            
-            // On sauvegarde d'abord toutes les créatures
-            for (Creature c: this.creatures){
-                bufferedWriter.write(c.toSave());
-                bufferedWriter.newLine();
-            }
-            
-            // On sauvegarde ensuite tous les objets
-            for (Objet o: this.objets){
-                bufferedWriter.write(o.toSave());
-                bufferedWriter.newLine();
-            }
-            
-            // On finit par sauvegarder le joueur et son inventaire
-            
-            
-            
-        }
-        
-        catch (FileNotFoundException e){
-            e.printStackTrace();
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-        
-        finally {
-            try {
-                if (bufferedWriter != null){
-                    bufferedWriter.flush();
-                    bufferedWriter.close();
-                }
-            }
-            catch (IOException e){
-                e.printStackTrace();
-            }
-        }
-        
-        
-    }
-    
-    
-
-
 }
