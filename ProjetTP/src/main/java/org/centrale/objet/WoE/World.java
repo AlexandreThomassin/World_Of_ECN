@@ -23,7 +23,7 @@ import java.util.StringTokenizer;
  */
 public class World {
     /**Tailledu monde*/
-    private static int n= 50;
+    private static int n= 20;
     /**Modélise le nombre de chaque catégorie de créatures (34 pour Archer voir boucle for)*/
     private static final int nb= 33;
     /**notre Archer Robin*/
@@ -82,8 +82,14 @@ public class World {
         int x;
         int y;
         for (int i = 0; i < (3*nb+1); i++){
-            Nourriture nourriture=new Nourriture(3,5,"degAtt");
-            nourriture.initialiserPosition(objets);
+            if(i>=0&&i<nb+1){
+                Nourriture nourriture=new Nourriture(3,5);
+                nourriture.initialiserPosition(objets);
+            }else if(i>=nb+1&&i<2*nb+1){
+                PotionSoin potion =new PotionSoin(1,50);
+            }else{
+                Epee epee=new Epee(1,10);
+            }
         }
 
         /**Positionner nos Creatures*/
@@ -125,20 +131,20 @@ public class World {
     
     public void chargementPartie(String name){
         
-        // On définit nos délémiteurs
+        /**On définit nos délémiteurs*/
         String delimiters = " ";
         StringTokenizer tokenizer;
         
         try {
             String line;
-            // On crée notre buffer pour lire le fichier
+            /**On crée notre buffer pour lire le fichier*/
             BufferedReader fichier = new BufferedReader(new FileReader(name));
             
-            // On lit la première ligne
+            /**On lit la première ligne*/
             line = fichier.readLine();
             while (line != null){
                 
-                // On sépare les éléments contenus dans la ligne
+                /**On sépare les éléments contenus dans la ligne*/
                 tokenizer = new StringTokenizer(line, delimiters);
                 
                 
@@ -146,7 +152,7 @@ public class World {
                     String mot = tokenizer.nextToken();
                     
                     
-                    // On passe le mot en lettre minuscule pour éviter les mot mal écrit
+                    /**On passe le mot en lettre minuscule pour éviter les mot mal écrit*/
                     mot = mot.toLowerCase();
                     System.out.println(mot);
                     
@@ -222,7 +228,7 @@ public class World {
                                 PotionSoin p;
                                 p = new PotionSoin(tokenizer);
                                 this.objets.add(p);  
-                                this.positionsOccupees.add(p.getPos());
+                                //this.positionsOccupees.add(p.getPos());
                                 
                             } catch (Exception e){
                                 System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'une potion de soin");
@@ -269,8 +275,6 @@ public class World {
         
         if (nom.isEmpty()){
             // Si le nom du fichier de sauvegarde est vide, on en crée un automatiquement
-            
-            
         }
        
         BufferedWriter bufferedWriter = null;

@@ -72,14 +72,14 @@ public abstract class Personnage extends Creature{
     }
     public void ramasserObjet(ArrayList<Objet> objets){
         for(Objet objet:objets){
-            if(objet.getPos().equals(this.getPos())&&objet.isUtilisable()){
+            if(objet.getPos().equals(this.getPos())&&objet instanceof Utilisable){
                 System.out.println("Un objet utilisable de type "+objet.getClass().getSimpleName()+" est trouvé !");
                 System.out.println("On va l'ajouter à l'inventaire");
                 inventaire.add(objet);
                 /**On retire l'objet ajoute a l'inventaire de la grille*/
                 objets.remove(objet);
                 break;
-            }else if(objet.getPos().equals(this.getPos())&&!objet.isUtilisable()){
+            }else if(objet.getPos().equals(this.getPos())&&!(objet instanceof Utilisable)){
                 System.out.println("Un objet non utilisable de type "+objet.getClass().getSimpleName()+" est trouvé ! " +
                         "On ne peut pas le ramsser");
             }

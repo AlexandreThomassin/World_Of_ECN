@@ -14,7 +14,7 @@ public class TestWoE {
     public static void main(String[] args) {
         /**Initialisation de la partie*/
         World monde = new World();
-        monde.chargementPartie("Sauvegarde-WoE.txt");
+        //monde.chargementPartie("Sauvegarde-WoE.txt");
         monde.creerMondeAlea();
         System.out.println("Une partie de jeu démarre !");
         Joueur joueur=new Joueur("Alexandre");
@@ -23,10 +23,10 @@ public class TestWoE {
                 " et a pour nom : "+joueur.getPersonnage().getNom());
         joueur.initialiserPosition(monde.getPositionsOccupees());
         joueur.getPersonnage().ramasserObjet(monde.getObjets());
-        monde.chargementPartie("test.txt");
+        //monde.chargementPartie("test.txt");
         /**Tours de jeu a effectuer*/
         int i=0;
-        while (i<10){
+        while (i<2){
             System.out.println("Tour n° "+(i+1));
             monde.tourDeJeu(joueur);
             i+=1;

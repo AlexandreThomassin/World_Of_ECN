@@ -40,8 +40,9 @@ public class Archer extends Personnage {
         int x = parseInt(tokenizer.nextToken());
         int y = parseInt(tokenizer.nextToken());
         Point2D pos = new Point2D(x, y);
-        
         setPos(pos);
+        setInventaire(new ArrayList<Objet>());
+        setEffets(new ArrayList<>());
     }
 
     public Archer() {

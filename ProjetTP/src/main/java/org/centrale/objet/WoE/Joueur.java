@@ -62,8 +62,8 @@ public class Joueur {
         Random gen= new Random();
         int x,y;
         do {
-            x = gen.nextInt(50);
-            y = gen.nextInt(50);
+            x = gen.nextInt(11);
+            y = gen.nextInt(11);
             this.personnage.setPos(x,y);
         } while (positionsOccupees.contains(this.personnage.getPos()));
         positionsOccupees.add(this.personnage.getPos());

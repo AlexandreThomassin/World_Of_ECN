@@ -1,13 +1,201 @@
-Largeur 25
-Hauteur 25
-Guerrier grosBill 250 10 8 80 60 1 4 8 3
-Archer robin 75 20 5 75 30 5 5 20 15
-Paysan peon 25 5 30 0 40 0 3 6
-Loup 04 30 80 50 50 19 3 4
-Lapin 80 4000 90 1 1000 1 10 10
-Loup 01 80 75 30 45 5 2 13
-Loup 02 30 30 30 20 10 5 14
-Lapin 03 30 20 20 40 10 23 23
-PotionSoin 25 18 18
-PotionSoin 100 4 20
-PotionSoin 48 1 19
+Largeur 20
+Hauteur 20
+Archer Archer n 1 100 25 5 75 40 5 5 8 8
+Archer Archer n 2 100 25 5 75 40 5 5 0 20
+Archer Archer n 3 100 25 5 75 40 5 5 6 11
+Archer Archer n 4 100 25 5 75 40 5 5 18 7
+Archer Archer n 5 100 25 5 75 40 5 5 5 10
+Archer Archer n 6 100 25 5 75 40 5 5 10 14
+Archer Archer n 7 75 25 5 75 40 5 5 1 6
+Archer Archer n 8 100 25 5 75 40 5 5 17 18
+Archer Archer n 9 100 25 5 75 40 5 5 3 11
+Archer Archer n 10 100 25 5 75 40 5 5 4 6
+Archer Archer n 11 100 25 5 75 40 5 5 20 4
+Archer Archer n 12 100 25 5 75 40 5 5 1 17
+Archer Archer n 13 100 25 5 75 40 5 5 18 5
+Archer Archer n 14 100 25 5 75 40 5 5 1 1
+Archer Archer n 15 100 25 5 75 40 5 5 11 1
+Archer Archer n 16 100 25 5 75 40 5 5 20 19
+Archer Archer n 17 100 25 5 75 40 5 5 6 14
+Archer Archer n 18 100 25 5 75 40 5 5 16 9
+Archer Archer n 19 100 25 5 75 40 5 5 8 5
+Archer Archer n 20 100 25 5 75 40 5 5 11 15
+Archer Archer n 21 100 25 5 75 40 5 5 7 1
+Archer Archer n 22 100 25 5 75 40 5 5 20 10
+Archer Archer n 23 100 25 5 75 40 5 5 6 7
+Archer Archer n 24 100 25 5 75 40 5 5 18 18
+Archer Archer n 25 100 25 5 75 40 5 5 8 6
+Archer Archer n 26 100 25 5 75 40 5 5 8 18
+Archer Archer n 27 100 25 5 75 40 5 5 11 14
+Archer Archer n 28 100 25 5 75 40 5 5 6 18
+Archer Archer n 29 100 25 5 75 40 5 5 7 6
+Archer Archer n 30 100 25 5 75 40 5 5 6 0
+Archer Archer n 31 100 25 5 75 40 5 5 14 9
+Archer Archer n 32 100 25 5 75 40 5 5 20 11
+Archer Archer n 33 100 25 5 75 40 5 5 2 13
+Archer Archer n 34 100 25 5 75 40 5 5 0 11
+Guerrier Guerrier n 35 100 20 5 75 50 1 6 16 14
+Guerrier Guerrier n 36 100 20 5 75 50 1 6 10 20
+Guerrier Guerrier n 37 100 20 5 75 50 1 6 5 9
+Guerrier Guerrier n 38 100 20 5 75 50 1 6 8 4
+Guerrier Guerrier n 39 100 20 5 75 50 1 6 15 8
+Guerrier Guerrier n 40 100 20 5 75 50 1 6 12 17
+Guerrier Guerrier n 41 100 20 5 75 50 1 6 10 16
+Guerrier Guerrier n 42 100 20 5 75 50 1 6 10 3
+Guerrier Guerrier n 43 100 20 5 75 50 1 6 1 7
+Guerrier Guerrier n 44 100 20 5 75 50 1 6 3 0
+Guerrier Guerrier n 45 100 20 5 75 50 1 6 9 16
+Guerrier Guerrier n 46 100 20 5 75 50 1 6 4 13
+Guerrier Guerrier n 47 100 20 5 75 50 1 6 18 6
+Guerrier Guerrier n 48 100 20 5 75 50 1 6 3 20
+Guerrier Guerrier n 49 100 20 5 75 50 1 6 5 1
+Guerrier Guerrier n 50 100 20 5 75 50 1 6 8 11
+Guerrier Guerrier n 51 100 20 5 75 50 1 6 2 18
+Guerrier Guerrier n 52 100 20 5 75 50 1 6 11 9
+Guerrier Guerrier n 53 100 20 5 75 50 1 6 4 15
+Guerrier Guerrier n 54 100 20 5 75 50 1 6 1 4
+Guerrier Guerrier n 55 100 20 5 75 50 1 6 14 17
+Guerrier Guerrier n 56 100 20 5 75 50 1 6 2 10
+Guerrier Guerrier n 57 100 20 5 75 50 1 6 1 19
+Guerrier Guerrier n 58 100 20 5 75 50 1 6 7 13
+Guerrier Guerrier n 59 100 20 5 75 50 1 6 16 13
+Guerrier Guerrier n 60 100 20 5 75 50 1 6 13 5
+Guerrier Guerrier n 61 100 20 5 75 50 1 6 4 3
+Guerrier Guerrier n 62 100 20 5 75 50 1 6 20 8
+Guerrier Guerrier n 63 100 20 5 75 50 1 6 2 7
+Guerrier Guerrier n 64 100 20 5 75 50 1 6 8 15
+Guerrier Guerrier n 65 100 20 5 75 50 1 6 18 11
+Guerrier Guerrier n 66 100 20 5 75 50 1 6 12 9
+Guerrier Guerrier n 67 100 20 5 75 50 1 6 8 10
+Loup Loup n 68 100 20 5 60 40 12 6
+Loup Loup n 69 100 20 5 60 40 16 15
+Loup Loup n 70 100 20 5 60 40 11 12
+Loup Loup n 71 100 20 5 60 40 -1 14
+Loup Loup n 72 100 20 5 60 40 14 6
+Loup Loup n 73 100 20 5 60 40 12 1
+Loup Loup n 74 100 20 5 60 40 11 16
+Loup Loup n 75 100 20 5 60 40 16 12
+Loup Loup n 76 100 20 5 60 40 10 13
+Loup Loup n 77 100 20 5 60 40 12 18
+Loup Loup n 78 100 20 5 60 40 9 3
+Loup Loup n 79 100 20 5 60 40 5 16
+Loup Loup n 80 100 20 5 60 40 12 10
+Loup Loup n 81 100 20 5 60 40 14 7
+Loup Loup n 82 100 20 5 60 40 2 8
+Loup Loup n 83 100 20 5 60 40 19 5
+Loup Loup n 84 100 20 5 60 40 5 8
+Loup Loup n 85 100 20 5 60 40 6 5
+Loup Loup n 86 100 20 5 60 40 -1 5
+Loup Loup n 87 100 20 5 60 40 16 16
+Loup Loup n 88 100 20 5 60 40 20 13
+Loup Loup n 89 100 20 5 60 40 4 7
+Loup Loup n 90 100 20 5 60 40 17 7
+Loup Loup n 91 100 20 5 60 40 11 18
+Loup Loup n 92 100 20 5 60 40 12 12
+Loup Loup n 93 100 20 5 60 40 11 4
+Loup Loup n 94 100 20 5 60 40 9 2
+Loup Loup n 95 100 20 5 60 40 11 11
+Loup Loup n 96 100 20 5 60 40 5 13
+Loup Loup n 97 100 20 5 60 40 7 4
+Loup Loup n 98 100 20 5 60 40 18 17
+Loup Loup n 99 100 20 5 60 40 10 8
+Loup Loup n 100 100 20 5 60 40 8 14
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
