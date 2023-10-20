@@ -1,0 +1,18 @@
+Largeur 25
+Hauteur 25
+Guerrier grosBill 250 10 8 80 60 1 4 8 3
+Archer robin 75 20 5 75 30 5 5 20 15
+Paysan peon 25 5 30 0 40 0 3 6
+Loup 04 30 80 50 50 19 3 4
+Lapin 80 4000 90 1 1000 1 10 10
+Loup 01 80 75 30 45 5 2 13
+Loup 02 30 30 30 20 10 5 14
+Lapin 03 30 20 20 40 10 23 23
+PotionSoin 25 18 18
+PotionSoin 100 4 20
+PotionSoin 48 1 19
+Joueur bob Guerrier bob 150 10 9 90 70 1 4 12 12
+ 
+
+
+

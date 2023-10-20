@@ -13,9 +13,11 @@ import java.util.ArrayList;
 public class TestWoE {
     public static void main(String[] args) {
         World monde = new World();
-        
-        monde.creerMondeAlea();
-        
-        System.out.println("Robin : " + monde.robin.pos + "\nPeon : " + monde.peon.pos + "\nBugs : " + monde.bugs.pos);
+        monde.chargementPartie("Sauvegarde-WoE.txt");
+//        monde.creerMondeAlea();
+        monde.sauvegardePartie("test.txt");
+        monde.chargementPartie("test.txt");
+        monde.tourDeJeu();
+
     }
 }

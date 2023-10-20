@@ -4,98 +4,38 @@
  */
 package org.centrale.objet.WoE;
 
+import java.util.Random;
+
 /**
  *
  * @author alex4
+ * @author moufid
  */
-public class Monstre {
-    public int ptVie;
-    public int degAtt;
-    public int ptPar;
-    public int pageAtt;
-    public int pagePar;
-    public Point2D pos;
+public abstract class Monstre extends Creature{
 
-    public Monstre(String nom, int ptVie, int degAtt, int ptPar, int pageAtt, int pagePar, int distAttMax, Point2D pos) {
-        this.ptVie = ptVie;
-        this.degAtt = degAtt;
-        this.ptPar = ptPar;
-        this.pageAtt = pageAtt;
-        this.pagePar = pagePar;
-        this.pos = pos;
+    /**constructeur 1
+     * @param ptVie les points de vie à donner au monstre
+     * etc...*/
+    public Monstre( String nom, int ptVie, int degAtt, int ptPar, int pageAtt, int pagePar, Point2D pos) {
+        super(nom, ptVie, degAtt, ptPar, pageAtt, pagePar, pos);
     }
-    
+    /**constructeur 2
+     * @param m pour faire une copie du monstre*/
     public Monstre(Monstre m){
-        this.ptVie = m.ptVie;
-        this.degAtt = m.degAtt;
-        this.ptPar = m.ptPar;
-        this.pageAtt = m.pageAtt;
-        this.pagePar = m.pagePar;
-        this.pos = m.pos;
+        super(m);
     }
 
     public Monstre() {
-    
+        super();
     }
 
-    public int getPtVie() {
-        return ptVie;
-    }
-
-    public int getDegAtt() {
-        return degAtt;
-    }
-
-    public int getPtPar() {
-        return ptPar;
-    }
-
-    public int getPageAtt() {
-        return pageAtt;
-    }
-
-    public int getPagePar() {
-        return pagePar;
-    }
-
-    public Point2D getPos() {
-        return pos;
-    }
-
-    public void setPtVie(int ptVie) {
-        this.ptVie = ptVie;
-    }
-
-    public void setDegAtt(int degAtt) {
-        this.degAtt = degAtt;
-    }
-
-    public void setPtPar(int ptPar) {
-        this.ptPar = ptPar;
-    }
-
-    public void setPageAtt(int pageAtt) {
-        this.pageAtt = pageAtt;
-    }
-
-    public void setPagePar(int pagePar) {
-        this.pagePar = pagePar;
-    }
-
-    public void setPos(Point2D pos) {
-        this.pos = pos;
-    }
-    
-    public void deplace() {
-        this.pos.translate(1, 1);
-    }
-
+    /** On surcharge toString() afin d'afficher notre monstre proprement*/
     @Override
     public String toString() {
-        return "Monstre{" + "ptVie=" + ptVie + ", degAtt=" + degAtt + ", ptPar=" + ptPar + ", pageAtt=" + pageAtt + ", pagePar=" + pagePar + ", pos=" + pos + '}';
+        return "Monstre{" + "ptVie=" + getPtVie() + ", degAtt=" + getDegAtt() + ", ptPar=" + getPtPar() + ", pageAtt=" + getPageAtt() + ", pagePar=" + getPagePar() + ", pos=" + getPos() + '}';
     }
     
-    public String affiche() {
-        return this.toString();
+    public void affiche() {
+        System.out.println(this.toString());
     }
 }
