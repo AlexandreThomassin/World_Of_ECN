@@ -10,4 +10,5 @@ package org.centrale.objet.WoE;
  */
 public interface Utilisable {
     public void utilisePar(Personnage personnage);
+    public Integer getDuree();
 }

@@ -41,7 +41,7 @@ public class Guerrier extends Personnage {
         setPtPar(5);
         caillous=new Projectile("caillous",6);
         setInventaire(new ArrayList<Objet>());
-        setEffets(new ArrayList<>());
+        setEffets(new ArrayList<Utilisable>());
     }
     
     public Guerrier(StringTokenizer tokenizer){

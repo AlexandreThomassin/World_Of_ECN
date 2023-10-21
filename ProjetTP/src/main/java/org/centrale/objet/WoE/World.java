@@ -23,7 +23,7 @@ import java.util.StringTokenizer;
  */
 public class World {
     /**Tailledu monde*/
-    private static int n= 20;
+    private static int n= 12;
     /**Modélise le nombre de chaque catégorie de créatures (34 pour Archer voir boucle for)*/
     private static final int nb= 33;
     /**notre Archer Robin*/
@@ -64,7 +64,7 @@ public class World {
         return creatures;
     }
 
-    /**Cette methode initialiserPositions() a pour but de répartir les différents
+    /**Cette methode creerMondeAlea() a pour but de répartir les différents
      * protagonistes sur notre grille de manière aléatoire et sans aucune collision
      * entre nos créatures, on a ainsi nos positions initiales.
      * Le but c'est d'optimiser le code le plus possible, on ajoute donc un attribut
@@ -74,7 +74,7 @@ public class World {
      * Puis avec deux simples boucles for et do while on parcourt notre tableau de creatures
      * et on affecte les positions initiales a ces dernieres sans aucun probleme
      */
-    public void initialiserPositions() {
+    public void creerMondeAlea() {
         /**On commence par positionner quelques potions*/
         //PotionSoin potion=new PotionSoin();
         //potion.initialiserPosition(objets);
@@ -87,8 +87,10 @@ public class World {
                 nourriture.initialiserPosition(objets);
             }else if(i>=nb+1&&i<2*nb+1){
                 PotionSoin potion =new PotionSoin(1,50);
+                potion.initialiserPosition(objets);
             }else{
-                Epee epee=new Epee(1,10);
+                Epee epee=new Epee(5,10);
+                epee.initialiserPosition(objets);
             }
         }
 
@@ -109,19 +111,6 @@ public class World {
             positionsOccupees.add(creatures.get(creatures.size()-1).getPos());
         }
         System.out.println("Nombre total de créatures : "+creatures.size());
-
-    }
-    /**Méthode de creation de notre monde la ou tous les événements se déroulent*/
-    public void creerMondeAlea() {
-        /**On va d'abord positionner nos creature de facon a ce qu'ils ne seraient
-         * pas sur la meme case
-         */
-        initialiserPositions();
-
-        /** Les objets effectuent leur premier déplacement*/
-        for (int i = 0; i < creatures.size(); i++) {
-            creatures.get(i).deplace(positionsOccupees);
-        }
 
     }
     void tourDeJeu(Joueur joueur){

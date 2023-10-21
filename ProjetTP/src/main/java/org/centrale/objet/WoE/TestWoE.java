@@ -26,7 +26,7 @@ public class TestWoE {
         //monde.chargementPartie("test.txt");
         /**Tours de jeu a effectuer*/
         int i=0;
-        while (i<2){
+        while (i<10){
             System.out.println("Tour n° "+(i+1));
             monde.tourDeJeu(joueur);
             i+=1;

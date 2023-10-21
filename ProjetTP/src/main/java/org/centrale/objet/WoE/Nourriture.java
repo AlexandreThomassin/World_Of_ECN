@@ -11,43 +11,52 @@ import java.util.Objects;
  * @author alex4
  */
 public class Nourriture extends Objet implements Utilisable {
+    @Override
+    public Integer getDuree() {
+        return duree;
+    }
+
     // Durée en tour de l'objet
     private Integer duree;
     // Valeur de l'effet : <0 si malus, >0 si bonus
-    private Integer value;
+    private Integer pageAtt;
     
     private boolean isActive;
 
-    public Nourriture(Integer duree, Integer value) {
+    public Nourriture(Integer duree, Integer pageAtt) {
         this.duree = duree;
-        this.value = value;
+        this.pageAtt = pageAtt;
         this.isActive = false;
     }
     
     public Nourriture(Nourriture n){
         this.duree = n.duree;
-        this.value = n.value;
+        this.pageAtt = n.pageAtt;
         this.isActive = n.isActive;
     }
     
     public void utilisePar(Personnage personnage){
         if (!isActive){
             isActive = true;
-                    personnage.setDegAtt(personnage.getDegAtt()+value);
-                    System.out.println("Le degré d'Attack de "+personnage.getNom()+" devient égal à" +
-                            " "+personnage.getDegAtt());
-        } else {
-            // On décrémente la durée à chaque utilisation
+                    personnage.setPageAtt(personnage.getPageAtt()+pageAtt);
+                    System.out.println("Le pourcentage d'Attack de "+personnage.getNom()+" devient égal à" +
+                            " "+personnage.getPageAtt());
             duree = duree - 1;
-            System.out.println("L'effet est déjà actif, Il reste à votre disposition pour "+duree+" tours");
-            // Si la durée arrive à 0 on inverse les effets de la nourriture pour revenir à la normale
+            System.out.println("L'effet reste à votre disposition pour "+duree+" tours");
+        } else {
             if (duree == 0){
-                        personnage.setDegAtt(personnage.getDegAtt()-value);
-                        System.out.println("Oups ! Cet effet devient un Malus\nLe degré d'Attack de " +
-                                personnage.getNom()+" devient "+personnage.getDegAtt());
+                        personnage.setPageAtt(personnage.getPageAtt()-pageAtt);
+                        System.out.println("Oups ! Cet effet devient un Malus\nLe pourcentage d'Attack de " +
+                                personnage.getNom()+" devient "+personnage.getPageAtt());
                 System.out.println("On enlève cet objet de notre collection");
                 personnage.getEffets().remove(this);
                 System.out.println("List des effets: "+personnage.getEffets().toString());
+            }else{
+                personnage.setPageAtt(personnage.getPageAtt()+pageAtt);
+                System.out.println("Le pourcentage d'Attack de "+personnage.getNom()+" devient égal à" +
+                        " "+personnage.getPageAtt());
+                duree = duree - 1;
+                System.out.println("L'effet reste à votre disposition pour "+duree+" tours");
             }
         }
     }

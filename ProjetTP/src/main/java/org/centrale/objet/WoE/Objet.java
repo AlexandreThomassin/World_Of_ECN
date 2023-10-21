@@ -36,11 +36,21 @@ public abstract class Objet {
         Random gen= new Random();
         int x,y;
         do {
-            x = gen.nextInt(11);
-            y = gen.nextInt(11);
+            x = gen.nextInt(12);
+            y = gen.nextInt(12);
             this.setPos(x,y);
         } while (objets.contains(this));
         objets.add(this);
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj){
+            return true;
+        }
+        if (obj == null){
+            return false;
+        }
+        return getPos().equals(((Objet) obj).getPos());
     }
 
     public abstract String toSave();

@@ -108,7 +108,6 @@ public class Joueur {
                 System.out.println("Vous avez choisi l'objet numéro "+choixNumero);
                 personnage.getEffets().add((Utilisable) personnage.getInventaire().get(choixNumero-1));
                 personnage.getInventaire().remove(choixNumero-1);
-                System.out.println("List des effets: "+personnage.getEffets().toString());
             }else{
                 System.out.println("Oups! Votre inventaire est vide!");
             }
@@ -116,10 +115,25 @@ public class Joueur {
         }
     }
     public void utiliseEffets(){
+        Scanner input = new Scanner(System.in);
+        int i=0;
+        String choix;
+        int choixNumero;
+        System.out.println("Le joueur doit maintenant choisir l'un de ces effets à utiliser !");
         if(!getPersonnage().getEffets().isEmpty()){
+            System.out.println("Voici la liste de vos effets : ");
             for(Utilisable utilisable:this.getPersonnage().getEffets()){
-                utilisable.utilisePar(this.getPersonnage());
+                System.out.println("Effet numéro "+(i+1)+" est de type "+utilisable.getClass().getSimpleName()+
+                        ", il est à votre disposition pour "+utilisable.getDuree()+" tours");
+                i+=1;
             }
+            System.out.println("Veuillez choisir un numéro d'effet à utiliser");
+            do {
+                choix= input.nextLine();
+                choixNumero=Integer.parseInt(choix);
+            }while(choixNumero<1||choixNumero>personnage.getEffets().size());
+            System.out.println("Vous avez choisi l'effet numéro "+choixNumero);
+            ((ArrayList<Utilisable>) personnage.getEffets()).get(choixNumero-1).utilisePar(personnage);
         }else{
             System.out.println("Oups ! Vous n'avez pas d'effets à votre disposition");
         }

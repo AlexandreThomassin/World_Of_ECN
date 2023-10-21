@@ -68,7 +68,7 @@ public class Archer extends Personnage {
         setPtPar(5);
         fleche=new Projectile("flèche",5);
         setInventaire(new ArrayList<Objet>());
-        setEffets(new ArrayList<>());
+        setEffets(new ArrayList<Utilisable>());
     }
     public void combattre(Creature c){
         System.out.println(this.getNom()+" décide d'attaquer "+c.getNom());
