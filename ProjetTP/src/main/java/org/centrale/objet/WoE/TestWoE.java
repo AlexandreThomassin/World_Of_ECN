@@ -4,7 +4,7 @@
  */
 package org.centrale.objet.WoE;
 
-import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -17,12 +17,15 @@ public class TestWoE {
         //monde.chargementPartie("Sauvegarde-WoE.txt");
         monde.creerMondeAlea();
         System.out.println("Une partie de jeu démarre !");
-        Joueur joueur=new Joueur("Alexandre");
-        System.out.println("Un joueur vient d'être créé, nom : "+joueur.getNom());
-        System.out.println("Son personnage choisi est de type " +joueur.getPersonnage().getClass().getSimpleName()+
-                " et a pour nom : "+joueur.getPersonnage().getNom());
-        joueur.initialiserPosition(monde.getPositionsOccupees());
-        joueur.getPersonnage().ramasserObjet(monde.getObjets());
+        System.out.println("Choisir un nom du joueur !");
+        Scanner input = new Scanner(System.in);
+        String nomJoueur;
+        do {
+            nomJoueur= input.nextLine();
+        }while(nomJoueur.isEmpty());
+        Joueur joueur=new Joueur(nomJoueur);
+        joueur.initialiserPosition(monde.getPositionsOccupees(),monde.getN());
+        joueur.getPersonnage().checkCase(monde.getObjets());
         //monde.chargementPartie("test.txt");
         /**Tours de jeu a effectuer*/
         int i=0;

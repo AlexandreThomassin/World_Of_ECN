@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.StringTokenizer;
 
-public class Guerrier extends Personnage {
+public class Guerrier extends Personnage implements Combat{
     private Projectile caillous;
     public Guerrier(String nom, int ptVie, int degAtt, int ptPar, int pageAtt, int pagePar, int distAttMax, Point2D pos,Projectile p) {
         super(nom, ptVie, degAtt, ptPar, pageAtt, pagePar, distAttMax, pos);
@@ -103,6 +103,9 @@ public class Guerrier extends Personnage {
                 System.out.println("Le défenseur ne peut pas se défendre !");
                 System.out.println("Points de vie du défenseur avant attaque : "+c.getPtVie());
                 c.setPtVie(c.getPtVie()-this.getDegAtt());
+            }else{
+                System.out.println("L'attaque est non réussie ! Le tir réalisé par l'attaquant " +
+                        "est supérieur à son pageAtt "+resAttaquant+"> "+getPageAtt());
             }
         }else {
             System.out.println("Le défenseur est trop loin de l'attaquant !");

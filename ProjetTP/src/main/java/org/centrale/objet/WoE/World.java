@@ -22,8 +22,12 @@ import java.util.StringTokenizer;
  * @author moufid
  */
 public class World {
+    public static int getN() {
+        return n;
+    }
+
     /**Tailledu monde*/
-    private static int n= 12;
+    private static int n= 11;
     /**Modélise le nombre de chaque catégorie de créatures (34 pour Archer voir boucle for)*/
     private static final int nb= 33;
     /**notre Archer Robin*/
@@ -37,7 +41,7 @@ public class World {
     private Archer guillaumeT;
     private Guerrier grosBill;
     private Loup wolfie;
-    private ArrayList<Creature> creatures;
+    private ArrayList<ElementDeJeu> creatures;
 
     public ArrayList<Point2D> getPositionsOccupees() {
         return positionsOccupees;
@@ -55,12 +59,12 @@ public class World {
 
     /**Constructeur qui initialise les objets de notre monde*/
     public World() {
-        creatures=new ArrayList<Creature>();
+        creatures=new ArrayList<ElementDeJeu>();
         positionsOccupees=new ArrayList<Point2D>();
         objets=new ArrayList<Objet>();
     }
     
-    public ArrayList<Creature> getCreatures() {
+    public ArrayList<ElementDeJeu> getCreatures() {
         return creatures;
     }
 
@@ -75,23 +79,26 @@ public class World {
      * et on affecte les positions initiales a ces dernieres sans aucun probleme
      */
     public void creerMondeAlea() {
-        /**On commence par positionner quelques potions*/
-        //PotionSoin potion=new PotionSoin();
-        //potion.initialiserPosition(objets);
+        /**On commence par positionner quelques objets utilisables*/
         Random gen = new Random();
         int x;
         int y;
         for (int i = 0; i < (3*nb+1); i++){
             if(i>=0&&i<nb+1){
                 Nourriture nourriture=new Nourriture(3,5);
-                nourriture.initialiserPosition(objets);
+                nourriture.initialiserPosition(objets,n);
             }else if(i>=nb+1&&i<2*nb+1){
                 PotionSoin potion =new PotionSoin(1,50);
-                potion.initialiserPosition(objets);
+                potion.initialiserPosition(objets,n);
             }else{
                 Epee epee=new Epee(5,10);
-                epee.initialiserPosition(objets);
+                epee.initialiserPosition(objets,n);
             }
+        }
+        /**On positionne quelques nuages toxiques*/
+        for (int i = 0; i < 10; i++){
+            NuageToxique nuageToxique=new NuageToxique(20);
+            nuageToxique.initialiserPosition(objets,n);
         }
 
         /**Positionner nos Creatures*/
@@ -278,7 +285,7 @@ public class World {
             bufferedWriter.newLine();
             
             // On sauvegarde d'abord toutes les créatures
-            for (Creature c: this.creatures){
+            for (ElementDeJeu c: this.creatures){
                 bufferedWriter.write(c.toSave());
                 bufferedWriter.newLine();
             }

@@ -3,7 +3,7 @@ package org.centrale.objet.WoE;
 import static java.lang.Integer.parseInt;
 import java.util.StringTokenizer;
 
-public class Loup extends Monstre{
+public class Loup extends Monstre implements Combat{
     public Loup(String nom, int ptVie, int degAtt, int ptPar, int pageAtt, int pagePar, Point2D pos){
         super(nom, ptVie, degAtt, ptPar, pageAtt, pagePar, pos);
     }

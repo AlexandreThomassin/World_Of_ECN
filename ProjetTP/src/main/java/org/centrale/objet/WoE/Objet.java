@@ -3,28 +3,7 @@ package org.centrale.objet.WoE;
 import java.util.ArrayList;
 import java.util.Random;
 
-public abstract class Objet {
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public void setPos(Point2D pos) {
-        this.pos = pos;
-    }
-    public void setPos(int x, int y) {
-        this.pos = new Point2D(x,y);
-    }
-
-    public Point2D getPos() {
-        return pos;
-    }
-
-    private String nom;
-    private Point2D pos;
+public abstract class Objet extends ElementDeJeu{
 
     /**Afin de simplifier, on part du principe qu'on positionne nos objets
      * sans tester la présence d'autres objets sur la même case, le cas echeant
@@ -32,12 +11,12 @@ public abstract class Objet {
      */
     public Objet(){
     }
-    public void initialiserPosition(ArrayList<Objet> objets){
+    public void initialiserPosition(ArrayList<Objet> objets, int n){
         Random gen= new Random();
         int x,y;
         do {
-            x = gen.nextInt(12);
-            y = gen.nextInt(12);
+            x = gen.nextInt(n);
+            y = gen.nextInt(n);
             this.setPos(x,y);
         } while (objets.contains(this));
         objets.add(this);
@@ -47,7 +26,7 @@ public abstract class Objet {
         if (this == obj){
             return true;
         }
-        if (obj == null){
+        if (obj == null ||((this.getClass().getSimpleName().equals("NuageToxique")&&!obj.getClass().getSimpleName().equals("NuageToxique"))||(!this.getClass().getSimpleName().equals("NuageToxique")&&obj.getClass().getSimpleName().equals("NuageToxique")))){
             return false;
         }
         return getPos().equals(((Objet) obj).getPos());

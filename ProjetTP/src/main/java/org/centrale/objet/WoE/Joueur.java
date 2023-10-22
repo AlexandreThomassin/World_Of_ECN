@@ -17,6 +17,7 @@ public class Joueur {
     private Personnage personnage;
     public Joueur(String nom){
         this.nom=nom;
+        System.out.println("Un joueur vient d'être créé, nom : "+this.nom);
         Class guerrier=Guerrier.class;
         Class archer=Archer.class;
         Scanner input = new Scanner(System.in);
@@ -36,6 +37,8 @@ public class Joueur {
         }else{
             personnage=new Archer(nomPersonnage);
         }
+        System.out.println("Le personnage choisi est de type " +personnage.getClass().getSimpleName()+
+                " et a pour nom : "+personnage.getNom());
     }
     
     public Joueur(StringTokenizer tokenizer){
@@ -58,18 +61,18 @@ public class Joueur {
         return personnage;
     }
     
-    public void initialiserPosition(ArrayList<Point2D> positionsOccupees){
+    public void initialiserPosition(ArrayList<Point2D> positionsOccupees,int n){
         Random gen= new Random();
         int x,y;
         do {
-            x = gen.nextInt(11);
-            y = gen.nextInt(11);
+            x = gen.nextInt(n);
+            y = gen.nextInt(n);
             this.personnage.setPos(x,y);
         } while (positionsOccupees.contains(this.personnage.getPos()));
         positionsOccupees.add(this.personnage.getPos());
         System.out.println(this.getPersonnage().getNom()+" est initialement à la position "+this.getPersonnage().getPos().toString());
     }
-    public void faireChoix(ArrayList<Point2D> positionsOccupees,ArrayList<Creature> creatures,
+    public void faireChoix(ArrayList<Point2D> positionsOccupees, ArrayList<ElementDeJeu> creatures,
                            ArrayList<Objet> objets){
         Scanner input = new Scanner(System.in);
         System.out.println("Vous voulez vous déplacer, combattre ou activer un objet de l'inventaire?\n Saisissez 'Combattre'" +
@@ -89,10 +92,15 @@ public class Joueur {
                 choixNumero=Integer.parseInt(choix);
             }
             while (choixNumero<1||choixNumero>100);
-            personnage.combattre(creatures.get(choixNumero-1));
+            if(personnage.getClass().getSimpleName().equals("Guerrier")){
+                ((Guerrier)personnage).combattre((Creature) creatures.get(choixNumero-1));
+            }else {
+                ((Archer)personnage).combattre((Creature) creatures.get(choixNumero-1));
+            }
+
         }else if(choix.equals("Se déplacer")){
-            personnage.deplace(positionsOccupees);
-            personnage.ramasserObjet(objets);
+            personnage.deplace(creatures);
+            personnage.checkCase(objets);
         }else{
             System.out.println("Vous avez choisi d'activer un objet de l'inventaire!");
             if (!personnage.getInventaire().isEmpty()){

@@ -6,7 +6,6 @@ package org.centrale.objet.WoE;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Random;
 
 /**
  *
@@ -70,7 +69,7 @@ public abstract class Personnage extends Creature{
     public void setDistAttMax(int distAttMax) {
         this.distAttMax = distAttMax;
     }
-    public void ramasserObjet(ArrayList<Objet> objets){
+    public void checkCase(ArrayList<Objet> objets){
         for(Objet objet:objets){
             if(objet.getPos().equals(this.getPos())&&objet instanceof Utilisable){
                 System.out.println("Un objet utilisable de type "+objet.getClass().getSimpleName()+" est trouvé !");
@@ -80,8 +79,8 @@ public abstract class Personnage extends Creature{
                 objets.remove(objet);
                 break;
             }else if(objet.getPos().equals(this.getPos())&&!(objet instanceof Utilisable)){
-                System.out.println("Un objet non utilisable de type "+objet.getClass().getSimpleName()+" est trouvé ! " +
-                        "On ne peut pas le ramsser");
+                System.out.println("Mince, un "+objet.getClass().getSimpleName()+" est trouvé ! ");
+                ((NuageToxique)objet).combattre(this);
             }
         }
     }

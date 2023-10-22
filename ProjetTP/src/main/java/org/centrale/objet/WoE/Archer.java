@@ -15,7 +15,7 @@ import java.util.StringTokenizer;
  *
  * @author alex4
  */
-public class Archer extends Personnage {
+public class Archer extends Personnage implements Combat{
     private Projectile fleche;
 
     public Archer(String nom, int ptVie, int degAtt, int ptPar, int pageAtt, int pagePar, int distAttMax, Point2D pos,Projectile p) {
@@ -112,6 +112,9 @@ public class Archer extends Personnage {
                 System.out.println("Le défenseur ne peut pas se défendre !");
                 System.out.println("Points de vie du défenseur avant attaque : "+c.getPtVie());
                 c.setPtVie(c.getPtVie()-this.getDegAtt());
+            }else{
+                System.out.println("L'attaque est non réussie ! Le tir réalisé par l'attaquant " +
+                        "est supérieur à son pageAtt "+resAttaquant+"> "+getPageAtt());
             }
         }else {
             System.out.println("Le défenseur est trop loin de l'attaquant !");
