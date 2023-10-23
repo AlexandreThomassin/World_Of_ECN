@@ -4,6 +4,7 @@
  */
 package org.centrale.objet.WoE;
 
+import static java.lang.Integer.min;
 import static java.lang.Integer.parseInt;
 import java.util.StringTokenizer;
 
@@ -55,7 +56,7 @@ public class Paysan extends Personnage {
     }
     
     public String toSave(){
-        return "Paysan " + this.getNom().substring(this.getNom().length()-2) + " " + this.getPtVie() + " " + this.getDegAtt() + " " + this.getPtPar() + " " 
+        return "Paysan " + this.getNom().substring(this.getNom().length()-min(this.getNom().length(),2)) + " " + this.getPtVie() + " " + this.getDegAtt() + " " + this.getPtPar() + " " 
                 + this.getPageAtt() + " " + this.getPagePar() + " " + this.getDistAttMax() + " "  
                 + this.getPos().getX() + " " + this.getPos().getY();
     }

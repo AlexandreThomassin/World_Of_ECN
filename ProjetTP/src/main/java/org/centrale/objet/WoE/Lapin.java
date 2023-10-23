@@ -4,6 +4,7 @@
  */
 package org.centrale.objet.WoE;
 
+import static java.lang.Integer.min;
 import static java.lang.Integer.parseInt;
 import java.util.StringTokenizer;
 
@@ -51,7 +52,7 @@ public class Lapin extends Monstre {
     }
     
     public String toSave(){
-        return "Lapin " + this.getNom().substring(this.getNom().length()-2) + " " + this.getPtVie() + " " + this.getDegAtt() + " " + this.getPtPar() + " "
+        return "Lapin " + this.getNom().substring(this.getNom().length()-min(this.getNom().length(),2)) + " " + this.getPtVie() + " " + this.getDegAtt() + " " + this.getPtPar() + " "
                 + this.getPageAtt() + " " + this.getPagePar() + " " + this.getPos().getX() + " " + this.getPos().getY();
     }
     

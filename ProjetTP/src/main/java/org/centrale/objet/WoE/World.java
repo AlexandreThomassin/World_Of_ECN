@@ -163,7 +163,6 @@ public class World {
                     
                     /**On passe le mot en lettre minuscule pour éviter les mot mal écrit*/
                     mot = mot.toLowerCase();
-                    System.out.println(mot);
                     
                     switch(mot){
                         case "largeur":
@@ -273,6 +272,7 @@ public class World {
                             // On charge le joueur
                             try {
                                 Joueur j = new Joueur(tokenizer);
+                                this.joueur = j;
                                 
                                 this.positionsOccupees.add(j.getPersonnage().getPos());
 

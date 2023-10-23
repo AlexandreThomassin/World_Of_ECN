@@ -4,6 +4,7 @@
  */
 package org.centrale.objet.WoE;
 
+import static java.lang.Integer.min;
 import static java.lang.Integer.parseInt;
 
 import java.util.ArrayList;
@@ -124,7 +125,7 @@ public class Archer extends Personnage implements Combat{
     }
     
     public String toSave(){
-        return "Archer " + this.getNom().substring(this.getNom().length()-2) + " " + this.getPtVie() + " " + this.getDegAtt() + " " + this.getPtPar() + " " 
+        return "Archer " + this.getNom().substring(this.getNom().length() - min(this.getNom().length(),2)) + " " + this.getPtVie() + " " + this.getDegAtt() + " " + this.getPtPar() + " " 
                 + this.getPageAtt() + " " + this.getPagePar() + " " + this.getDistAttMax() + " " + this.fleche.getNombre() + " " 
                 + this.getPos().getX() + " " + this.getPos().getY();
     }
