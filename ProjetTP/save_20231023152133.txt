@@ -1,0 +1,45 @@
+Largeur 11
+Hauteur 11
+Archer  1 100 25 5 75 40 5 5 4 4
+Archer  2 100 25 5 75 40 5 5 9 3
+Archer  3 100 25 5 75 40 5 5 3 9
+Archer  4 100 25 5 75 40 5 5 9 10
+Archer  5 100 25 5 75 40 5 5 5 4
+Archer  6 100 25 5 75 40 5 5 3 3
+Guerrier  7 100 20 5 75 50 1 6 5 2
+Guerrier  8 100 20 5 75 50 1 6 2 1
+Guerrier  9 100 20 5 75 50 1 6 10 0
+Guerrier 10 100 20 5 75 50 1 6 0 0
+Guerrier 11 100 20 5 75 50 1 6 8 2
+Loup 12 100 20 5 60 40 0 3
+Loup 13 100 20 5 60 40 10 9
+Loup 14 100 20 5 60 40 7 1
+Loup 15 100 20 5 60 40 4 9
+Loup 16 100 20 5 60 40 0 9
+Nourriture 3 5 false 8 5
+Nourriture 3 5 false 6 0
+Nourriture 3 5 false 4 5
+Nourriture 3 5 false 10 9
+Nourriture 3 5 false 1 0
+Nourriture 3 5 false 4 0
+PotionSoin 50 4 6
+PotionSoin 50 6 8
+PotionSoin 50 2 1
+PotionSoin 50 10 10
+PotionSoin 50 2 3
+Epee 10 7 10
+Epee 10 5 10
+Epee 10 10 8
+Epee 10 2 4
+Epee 10 3 5
+Epee 20 3 3
+Epee 20 5 0
+Epee 20 2 5
+Epee 20 8 10
+Epee 20 1 8
+Epee 20 6 9
+Epee 20 7 5
+Epee 20 10 4
+Epee 20 9 4
+Epee 20 8 0
+Joueur Archer Alex 100 25 5 75 40 10 5 9 9

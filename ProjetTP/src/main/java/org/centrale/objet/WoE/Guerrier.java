@@ -115,6 +115,12 @@ public class Guerrier extends Personnage implements Combat{
     }
     
     public String toSave(){
+        return "Guerrier " + this.getNom().substring(this.getNom().length()-2) + " " + this.getPtVie() + " " + this.getDegAtt() + " " + this.getPtPar() + " " 
+                + this.getPageAtt() + " " + this.getPagePar() + " " + this.getDistAttMax() + " " + this.caillous.getNombre() + " " 
+                + this.getPos().getX() + " " + this.getPos().getY();
+    }
+    
+    public String toSavePerso(){
         return "Guerrier " + this.getNom() + " " + this.getPtVie() + " " + this.getDegAtt() + " " + this.getPtPar() + " " 
                 + this.getPageAtt() + " " + this.getPagePar() + " " + this.getDistAttMax() + " " + this.caillous.getNombre() + " " 
                 + this.getPos().getX() + " " + this.getPos().getY();

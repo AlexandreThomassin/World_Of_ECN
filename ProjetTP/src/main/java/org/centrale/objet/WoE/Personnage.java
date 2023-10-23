@@ -97,8 +97,8 @@ public abstract class Personnage extends Creature{
     }
 
     
-    
-    
-    
+    public String toSavePerso(){
+        return null;
+    }
     
 }

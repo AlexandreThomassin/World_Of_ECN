@@ -51,7 +51,7 @@ public class Lapin extends Monstre {
     }
     
     public String toSave(){
-        return "Lapin " + this.getNom() + " " + this.getPtVie() + " " + this.getDegAtt() + " " + this.getPtPar() + " "
+        return "Lapin " + this.getNom().substring(this.getNom().length()-2) + " " + this.getPtVie() + " " + this.getDegAtt() + " " + this.getPtPar() + " "
                 + this.getPageAtt() + " " + this.getPagePar() + " " + this.getPos().getX() + " " + this.getPos().getY();
     }
     

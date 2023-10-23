@@ -3,8 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package org.centrale.objet.WoE;
+import static java.lang.Integer.parseInt;
 import java.lang.reflect.Field;
 import java.util.Objects;
+import java.util.StringTokenizer;
 
 /**
  *
@@ -35,6 +37,13 @@ public class Nourriture extends Objet implements Utilisable {
         this.isActive = n.isActive;
     }
     
+    public Nourriture(StringTokenizer tokenizer){
+        this.duree = parseInt(tokenizer.nextToken());
+        this.pageAtt = parseInt(tokenizer.nextToken());
+        this.isActive = tokenizer.nextToken().equals("true");
+        this.setPos(parseInt(tokenizer.nextToken()), parseInt(tokenizer.nextToken()));
+    }
+    
     public void utilisePar(Personnage personnage){
         if (!isActive){
             isActive = true;
@@ -52,9 +61,6 @@ public class Nourriture extends Objet implements Utilisable {
                 personnage.getEffets().remove(this);
                 System.out.println("List des effets: "+personnage.getEffets().toString());
             }else{
-                personnage.setPageAtt(personnage.getPageAtt()+pageAtt);
-                System.out.println("Le pourcentage d'Attack de "+personnage.getNom()+" devient égal à" +
-                        " "+personnage.getPageAtt());
                 duree = duree - 1;
                 System.out.println("L'effet reste à votre disposition pour "+duree+" tours");
             }
@@ -75,7 +81,7 @@ public class Nourriture extends Objet implements Utilisable {
     
     
     public String toSave(){
-        return "";
+        return "Nourriture " + this.duree + " " + this.pageAtt + " " + this.isActive + " " + getPos().getX() + " " + getPos().getY();
     }
     
 }

@@ -2,6 +2,7 @@ package org.centrale.objet.WoE;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public abstract class Creature extends ElementDeJeu implements Deplaceable{
     /** points de vie de la creature*/
@@ -108,6 +109,72 @@ public abstract class Creature extends ElementDeJeu implements Deplaceable{
 
         System.out.println(getNom()+" est désormais à la position "+getPos().toString());
     }
+    
+        public void deplacePerso(ArrayList<ElementDeJeu> elementsDeJeu, ArrayList<Point2D> positionsOccupees) {
+            
+        Scanner input = new Scanner(System.in);
+    
+        int dx=0;
+        int dy=0;
+        boolean positionOccupee=false;
+        /**Tant que (dx=0 et dy=0) ou la nouvelle position est déjà occupée on refait le tir*/
+        do {
+            positionOccupee=false;
+            do{
+                System.out.println("Veuillez choisir un nombre entre -1 et 1 ou le déplacement horizontal");
+                String choix = input.nextLine();
+                dx = Integer.parseInt(choix);
+                if (this.getPos().getX()+dx<0){
+                    System.out.println("Vous ne pouvez pas vous déplacer dans cette direction, vous êtes au bord du monde");
+                    
+                }
+                
+                System.out.println("Veuillez choisir un nombre entre -1 et 1 ou le déplacement vertical");
+                choix = input.nextLine();
+                
+                dy = Integer.parseInt(choix);
+                
+                if (this.getPos().getY()+dy<0){
+                    System.out.println("Vous ne pouvez pas vous déplacer dans cette direction, vous êtes au bord du monde");
+                    
+                }
+                
+            }while((dx==0&&dy==0)||(this.getPos().getX()+dx<0||this.getPos().getY()+dy<0));
+            for(ElementDeJeu elementDeJeu:elementsDeJeu){
+                if(elementDeJeu.getPos().equals(new Point2D(this.getPos().getX()+dx,this.getPos().getY()+dy))){
+                    positionOccupee=true;
+                    System.out.println("La position est occupée, vous ne pouvez pas vous déplacer ici");
+                    break;
+                }
+            }
+            
+            int i,j;
+            boolean blocked = true;
+            for(i=-1; i<=1;i++){
+                for(j=-1; j<=1;j++){
+                    if((i!=0) && (j!=0)){
+                        if (!positionsOccupees.contains(new Point2D(this.getPos().getX()+i,this.getPos().getY()+j))){
+                            blocked = false;
+                        }
+                    }
+                }
+            }
+            if (blocked){
+                System.out.println("Vous êtes bloqués de tout les cotés, veuillez tuer les enemis pour avancer");
+                break;
+            }
+            
+            
+            /**On fait la translation si la case n'est pas occupee*/
+            if(!positionOccupee) this.getPos().translate(dx, dy);
+        }while(positionOccupee);
+
+        System.out.println(getNom()+" est désormais à la position "+getPos().toString());
+    }
+    
+    
+    
+    
     public void recupererPotionVie(int ptVie){
         this.ptVie+=ptVie;
     }

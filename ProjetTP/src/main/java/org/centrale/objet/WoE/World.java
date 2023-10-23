@@ -14,6 +14,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import static java.lang.Integer.parseInt;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.StringTokenizer;
 
 /**
@@ -29,7 +31,7 @@ public class World {
     /**Tailledu monde*/
     private static int n= 11;
     /**Modélise le nombre de chaque catégorie de créatures (34 pour Archer voir boucle for)*/
-    private static final int nb= 33;
+    private static final int nb= 5;
     /**notre Archer Robin*/
     private Archer robin;
     /**notre Paysan Peon*/
@@ -55,6 +57,15 @@ public class World {
 
     private ArrayList<Objet> objets;
     
+    private Joueur joueur;
+
+    public Joueur getJoueur() {
+        return joueur;
+    }
+
+    public void setJoueur(Joueur joueur) {
+        this.joueur = joueur;
+    }
 
 
     /**Constructeur qui initialise les objets de notre monde*/
@@ -121,6 +132,8 @@ public class World {
 
     }
     void tourDeJeu(Joueur joueur){
+        displayWorld();
+        System.out.println("---------------");
         joueur.faireChoix(positionsOccupees,creatures,objets);
         joueur.utiliseEffets();
     }
@@ -231,6 +244,31 @@ public class World {
                             }
                             break;
                             
+                        case "epee":
+                            try {
+                                Epee e;
+                                e = new Epee(tokenizer);
+                                this.objets.add(e);  
+                                //this.positionsOccupees.add(p.getPos());
+
+                            } catch (Exception e){
+                                System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'une epee");
+                            }
+                            break;
+                            
+                        case "nourriture":
+                            try {
+                                Nourriture n;
+                                n = new Nourriture(tokenizer);
+                                this.objets.add(n);  
+                                //this.positionsOccupees.add(p.getPos());
+
+                            } catch (Exception e){
+                                System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'une nourriture");
+                            }
+                            break;
+                            
+                            
                         case "joueur":
                             // On charge le joueur
                             try {
@@ -242,9 +280,42 @@ public class World {
                                 System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'un joueur");
                             }                                    
                             
-                            // On charge ensuite l'inventaire
+         
+                            break;
                             
-                            
+                        case "inventaire":
+                            if (tokenizer.nextToken().equals("PotionSoin")){
+                                try {
+                                    PotionSoin p;
+                                    p = new PotionSoin(tokenizer);
+                                    this.objets.add(p);  
+                                    //this.positionsOccupees.add(p.getPos());
+
+                                } catch (Exception e){
+                                    System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'une potion de soin");
+                                }
+                                
+                            } else if (tokenizer.nextToken().equals("Epee")){
+                                try {
+                                    Epee e;
+                                    e = new Epee(tokenizer);
+                                    this.objets.add(e);  
+                                    //this.positionsOccupees.add(p.getPos());
+
+                                } catch (Exception e){
+                                    System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'une epee");
+                                }
+                            } else if (tokenizer.nextToken().equals("Nourriture")){
+                                try {
+                                    Nourriture n;
+                                    n = new Nourriture(tokenizer);
+                                    this.objets.add(n);  
+                                    //this.positionsOccupees.add(p.getPos());
+
+                                } catch (Exception e){
+                                    System.out.println("Sauvegarde incorrecte : Il manque des arguments pour la création d'une nourriture");
+                                }
+                            }
                             break;
                             
                         default:
@@ -271,6 +342,9 @@ public class World {
         
         if (nom.isEmpty()){
             // Si le nom du fichier de sauvegarde est vide, on en crée un automatiquement
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+            String timestamp = dateFormat.format(new Date());
+            nom = "save_" + timestamp + ".txt";
         }
        
         BufferedWriter bufferedWriter = null;
@@ -297,9 +371,13 @@ public class World {
             }
             
             // On finit par sauvegarder le joueur et son inventaire
+            bufferedWriter.write(this.joueur.toSave());
+            bufferedWriter.newLine();
             
-            
-            
+            for (ElementDeJeu e: this.joueur.getPersonnage().getInventaire()){
+                bufferedWriter.write("Inventaire " + e.toSave());
+                bufferedWriter.newLine();
+            }
         }
         
         catch (FileNotFoundException e){
@@ -324,7 +402,74 @@ public class World {
         
     }
     
-    
+    public void displayWorld(){
+        String display = "- ".repeat(this.n+2) + "\n";
+        display += ("| " + "+ ".repeat(this.n) + "| \n").repeat(this.n);
+        display += "- ".repeat(this.n+2) + "\n";
+        
+        display += "Légende :\nP: Paysan | G: Guerrier | A: Archer\nW: Loup | L: Lapin | S: Epee\nF: Nourriture | H: Potion de Soin";
+        
+        StringBuilder disp = new StringBuilder(display); 
+        
+        for(ElementDeJeu c: creatures){
+            int x = c.getPos().getX();
+            int y = c.getPos().getY();
+            
+            char chr = '+';
+            
+            if(c instanceof Archer){
+                chr = 'A';
+            }
+            
+            if(c instanceof Guerrier){
+                chr = 'G';
+            }
+         
+            if(c instanceof Loup){
+                chr = 'W';
+            }
+            
+            if(c instanceof Lapin){
+                chr = 'L';
+            }
+            
+            if(c instanceof Paysan){
+                chr = 'P';
+            }
+            
+            disp.setCharAt((x + 1)*2 + (this.n - y)*(this.n*2+5), chr); 
+        }
+        
+        for(Objet o: objets){
+            int x = o.getPos().getX();
+            int y = o.getPos().getY();
+            
+            char chr = '+';
+            
+            if(o instanceof Epee){
+                chr = 'S';
+            }
+            
+            if(o instanceof Nourriture){
+                chr = 'F';
+            }
+         
+            if(o instanceof PotionSoin){
+                chr = 'H';
+            }
+            
+            
+            disp.setCharAt((x + 1)*2 + (this.n - y)*(this.n*2+5), chr); 
+        }
+        
+        int Jx = this.joueur.getPersonnage().getPos().getX();
+        int Jy = this.joueur.getPersonnage().getPos().getY();
+        
+        disp.setCharAt((Jx + 1)*2 + (this.n - Jy)*(this.n*2+5), 'J'); 
+        
+        System.out.println(disp);
+        
+    }
 
 
 }

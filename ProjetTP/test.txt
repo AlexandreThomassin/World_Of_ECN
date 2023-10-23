@@ -1,198 +1,45 @@
-Largeur 12
-Hauteur 12
-Archer Archer n 1 100 25 5 75 40 5 5 10 11
-Archer Archer n 2 100 25 5 75 40 5 5 9 2
-Archer Archer n 3 100 25 5 75 40 5 5 10 4
-Archer Archer n 4 100 25 5 75 40 5 5 6 6
-Archer Archer n 5 100 25 5 75 40 5 5 5 2
-Archer Archer n 6 100 25 5 75 40 5 5 3 5
-Archer Archer n 7 100 25 5 75 40 5 5 1 3
-Archer Archer n 8 100 25 5 75 40 5 5 9 11
-Archer Archer n 9 100 25 5 75 40 5 5 5 6
-Archer Archer n 10 100 25 5 75 40 5 5 0 3
-Archer Archer n 11 100 25 5 75 40 5 5 2 1
-Archer Archer n 12 100 25 5 75 40 5 5 3 11
-Archer Archer n 13 100 25 5 75 40 5 5 4 4
-Archer Archer n 14 100 25 5 75 40 5 5 1 5
-Archer Archer n 15 100 25 5 75 40 5 5 5 8
-Archer Archer n 16 100 25 5 75 40 5 5 7 3
-Archer Archer n 17 100 25 5 75 40 5 5 11 11
-Archer Archer n 18 100 25 5 75 40 5 5 0 5
-Archer Archer n 19 100 25 5 75 40 5 5 0 8
-Archer Archer n 20 100 25 5 75 40 5 5 0 1
-Archer Archer n 21 100 25 5 75 40 5 5 9 1
-Archer Archer n 22 100 25 5 75 40 5 5 6 8
-Archer Archer n 23 100 25 5 75 40 5 5 9 7
-Archer Archer n 24 100 25 5 75 40 5 5 11 10
-Archer Archer n 25 100 25 5 75 40 5 5 1 10
-Archer Archer n 26 100 25 5 75 40 5 5 7 10
-Archer Archer n 27 100 25 5 75 40 5 5 6 3
-Archer Archer n 28 100 25 5 75 40 5 5 9 9
-Archer Archer n 29 100 25 5 75 40 5 5 2 2
-Archer Archer n 30 100 25 5 75 40 5 5 7 9
-Archer Archer n 31 100 25 5 75 40 5 5 2 5
-Archer Archer n 32 100 25 5 75 40 5 5 7 11
-Archer Archer n 33 100 25 5 75 40 5 5 11 3
-Archer Archer n 34 100 25 5 75 40 5 5 8 9
-Guerrier Guerrier n 35 100 20 5 75 50 1 6 4 10
-Guerrier Guerrier n 36 100 20 5 75 50 1 6 1 9
-Guerrier Guerrier n 37 100 20 5 75 50 1 6 11 6
-Guerrier Guerrier n 38 100 20 5 75 50 1 6 3 2
-Guerrier Guerrier n 39 100 20 5 75 50 1 6 8 8
-Guerrier Guerrier n 40 100 20 5 75 50 1 6 4 7
-Guerrier Guerrier n 41 100 20 5 75 50 1 6 3 9
-Guerrier Guerrier n 42 100 20 5 75 50 1 6 4 9
-Guerrier Guerrier n 43 100 20 5 75 50 1 6 5 4
-Guerrier Guerrier n 44 100 20 5 75 50 1 6 8 11
-Guerrier Guerrier n 45 100 20 5 75 50 1 6 8 3
-Guerrier Guerrier n 46 100 20 5 75 50 1 6 0 2
-Guerrier Guerrier n 47 100 20 5 75 50 1 6 6 1
-Guerrier Guerrier n 48 100 20 5 75 50 1 6 9 4
-Guerrier Guerrier n 49 100 20 5 75 50 1 6 6 2
-Guerrier Guerrier n 50 100 20 5 75 50 1 6 10 2
-Guerrier Guerrier n 51 100 20 5 75 50 1 6 8 2
-Guerrier Guerrier n 52 100 20 5 75 50 1 6 10 0
-Guerrier Guerrier n 53 100 20 5 75 50 1 6 1 7
-Guerrier Guerrier n 54 100 20 5 75 50 1 6 6 5
-Guerrier Guerrier n 55 100 20 5 75 50 1 6 3 10
-Guerrier Guerrier n 56 100 20 5 75 50 1 6 10 6
-Guerrier Guerrier n 57 100 20 5 75 50 1 6 5 0
-Guerrier Guerrier n 58 100 20 5 75 50 1 6 8 0
-Guerrier Guerrier n 59 100 20 5 75 50 1 6 4 6
-Guerrier Guerrier n 60 100 20 5 75 50 1 6 9 8
-Guerrier Guerrier n 61 100 20 5 75 50 1 6 8 1
-Guerrier Guerrier n 62 100 20 5 75 50 1 6 4 11
-Guerrier Guerrier n 63 100 20 5 75 50 1 6 2 6
-Guerrier Guerrier n 64 100 20 5 75 50 1 6 3 8
-Guerrier Guerrier n 65 100 20 5 75 50 1 6 4 5
-Guerrier Guerrier n 66 100 20 5 75 50 1 6 10 3
-Guerrier Guerrier n 67 100 20 5 75 50 1 6 9 5
-Loup Loup n 68 100 20 5 60 40 4 3
-Loup Loup n 69 100 20 5 60 40 2 9
-Loup Loup n 70 100 20 5 60 40 8 10
-Loup Loup n 71 100 20 5 60 40 3 0
-Loup Loup n 72 100 20 5 60 40 1 11
-Loup Loup n 73 100 20 5 60 40 6 10
-Loup Loup n 74 100 20 5 60 40 10 10
-Loup Loup n 75 100 20 5 60 40 1 1
-Loup Loup n 76 100 20 5 60 40 0 7
-Loup Loup n 77 100 20 5 60 40 2 4
-Loup Loup n 78 100 20 5 60 40 7 0
-Loup Loup n 79 100 20 5 60 40 6 0
-Loup Loup n 80 100 20 5 60 40 11 9
-Loup Loup n 81 100 20 5 60 40 4 0
-Loup Loup n 82 100 20 5 60 40 1 2
-Loup Loup n 83 100 20 5 60 40 2 11
-Loup Loup n 84 100 20 5 60 40 9 10
-Loup Loup n 85 100 20 5 60 40 8 7
-Loup Loup n 86 100 20 5 60 40 8 6
-Loup Loup n 87 100 20 5 60 40 1 6
-Loup Loup n 88 75 20 5 60 40 11 4
-Loup Loup n 89 100 20 5 60 40 7 8
-Loup Loup n 90 100 20 5 60 40 1 4
-Loup Loup n 91 100 20 5 60 40 11 5
-Loup Loup n 92 100 20 5 60 40 2 8
-Loup Loup n 93 100 20 5 60 40 7 1
-Loup Loup n 94 100 20 5 60 40 11 0
-Loup Loup n 95 100 20 5 60 40 1 8
-Loup Loup n 96 100 20 5 60 40 7 5
-Loup Loup n 97 100 20 5 60 40 10 1
-Loup Loup n 98 100 20 5 60 40 2 7
-Loup Loup n 99 100 20 5 60 40 4 1
-Loup Loup n 100 100 20 5 60 40 2 3
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-PotionSoin 50 9 1
-PotionSoin 50 2 9
-PotionSoin 50 6 7
-PotionSoin 50 0 4
-PotionSoin 50 4 11
-PotionSoin 50 3 4
-PotionSoin 50 3 9
-PotionSoin 50 11 11
-PotionSoin 50 0 0
-PotionSoin 50 3 5
-PotionSoin 50 2 10
-PotionSoin 50 4 3
-PotionSoin 50 1 1
-PotionSoin 50 6 3
-PotionSoin 50 5 1
-PotionSoin 50 5 6
-PotionSoin 50 2 11
-PotionSoin 50 4 7
-PotionSoin 50 11 0
-PotionSoin 50 8 3
+Largeur 11
+Hauteur 11
+Archer  1 100 25 5 75 40 5 5 6 10
+Archer  2 100 25 5 75 40 5 5 8 3
+Archer  3 100 25 5 75 40 5 5 5 2
+Archer  4 100 25 5 75 40 5 5 2 7
+Archer  5 100 25 5 75 40 5 5 6 7
+Archer  6 100 25 5 75 40 5 5 5 6
+Guerrier  7 100 20 5 75 50 1 6 2 6
+Guerrier  8 100 20 5 75 50 1 6 4 4
+Guerrier  9 100 20 5 75 50 1 6 10 10
+Guerrier 10 100 20 5 75 50 1 6 7 3
+Guerrier 11 100 20 5 75 50 1 6 10 8
+Loup 12 100 20 5 60 40 9 4
+Loup 13 100 20 5 60 40 7 8
+Loup 14 100 20 5 60 40 8 9
+Loup 15 100 20 5 60 40 5 8
+Loup 16 100 20 5 60 40 3 8
+Nourriture 3 5 false 9 0
+Nourriture 3 5 false 4 1
+Nourriture 3 5 false 4 7
+Nourriture 3 5 false 4 3
+Nourriture 3 5 false 0 5
+Nourriture 3 5 false 0 1
 PotionSoin 50 9 7
-PotionSoin 50 8 11
-PotionSoin 50 11 7
+PotionSoin 50 2 9
+PotionSoin 50 0 7
 PotionSoin 50 5 4
-PotionSoin 50 10 7
-PotionSoin 50 3 11
-PotionSoin 50 10 11
-PotionSoin 50 3 1
-PotionSoin 50 9 0
-PotionSoin 50 1 4
-PotionSoin 50 9 9
-Epee 10 4 4
-Epee 10 0 10
-Epee 10 10 6
-Epee 10 9 10
-Epee 10 2 3
-Epee 10 3 10
-Epee 10 7 2
-Epee 10 10 10
-Epee 10 5 11
-Epee 10 11 8
-Epee 10 0 11
-Epee 10 9 5
-Epee 10 1 8
-Epee 10 1 5
-Epee 10 7 1
-Epee 10 0 3
-Epee 10 10 8
-Epee 10 7 0
-Epee 10 8 7
-Epee 10 2 7
-Epee 10 3 3
-Epee 10 10 9
-Epee 10 0 8
-Epee 10 0 2
-Epee 10 7 10
-Epee 10 8 10
+PotionSoin 50 3 10
+Epee 10 3 1
+Epee 10 5 9
+Epee 10 4 5
+Epee 10 6 4
 Epee 10 3 7
-Epee 10 7 7
-Epee 10 10 5
-Epee 10 7 11
-Epee 10 5 2
-Epee 10 5 7
-Epee 10 2 1
+Epee 20 7 6
+Epee 20 4 3
+Epee 20 7 3
+Epee 20 8 10
+Epee 20 4 5
+Epee 20 9 7
+Epee 20 10 7
+Epee 20 8 2
+Epee 20 2 4
+Epee 20 9 10
+Joueur Guerrier Alex 100 20 5 75 50 10 5 0 10

@@ -21,7 +21,7 @@ public class Joueur {
         Class guerrier=Guerrier.class;
         Class archer=Archer.class;
         Scanner input = new Scanner(System.in);
-        System.out.println("Choisir un type de personnage !");
+        System.out.println("Choisir un type de personnage : Guerrier | Archer");
         String typePersonnage;
         do {
             typePersonnage= input.nextLine();
@@ -42,7 +42,6 @@ public class Joueur {
     }
     
     public Joueur(StringTokenizer tokenizer){
-        this.nom = tokenizer.nextToken();
         if (tokenizer.hasMoreTokens()){
             String choix = tokenizer.nextToken();
             System.out.println(choix);
@@ -76,30 +75,30 @@ public class Joueur {
                            ArrayList<Objet> objets){
         Scanner input = new Scanner(System.in);
         System.out.println("Vous voulez vous déplacer, combattre ou activer un objet de l'inventaire?\n Saisissez 'Combattre'" +
-                "ou 'Se déplacer' ou 'Activer effet'");
+                "ou 'Se deplacer' ou 'Activer effet'");
         String choix;
         int choixNumero;
         do {
             choix= input.nextLine();
         }
         while ((!choix.equals("Combattre")&&
-                !choix.equals("Se déplacer")&&!choix.equals("Activer effet"))||choix.isEmpty());
+                !choix.equals("Se deplacer")&&!choix.equals("Activer effet"))||choix.isEmpty());
         if(choix.equals("Combattre")){
-            System.out.println("Choisissez un numéro de créature à combattre entre 1 et 100");
+            System.out.println("Choisissez un numéro de créature à combattre entre 1 et "+creatures.size());
 
             do {
                 choix= input.nextLine();
                 choixNumero=Integer.parseInt(choix);
             }
-            while (choixNumero<1||choixNumero>100);
+            while (choixNumero<1||choixNumero>creatures.size());
             if(personnage.getClass().getSimpleName().equals("Guerrier")){
                 ((Guerrier)personnage).combattre((Creature) creatures.get(choixNumero-1));
             }else {
                 ((Archer)personnage).combattre((Creature) creatures.get(choixNumero-1));
             }
 
-        }else if(choix.equals("Se déplacer")){
-            personnage.deplace(creatures);
+        }else if(choix.equals("Se deplacer")){
+            personnage.deplacePerso(creatures, positionsOccupees);
             personnage.checkCase(objets);
         }else{
             System.out.println("Vous avez choisi d'activer un objet de l'inventaire!");
@@ -145,6 +144,10 @@ public class Joueur {
         }else{
             System.out.println("Oups ! Vous n'avez pas d'effets à votre disposition");
         }
+    }
+    
+    public String toSave(){
+        return "Joueur " + this.personnage.toSavePerso();
     }
 
 }
