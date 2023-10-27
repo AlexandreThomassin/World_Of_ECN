@@ -110,7 +110,7 @@ public abstract class Creature extends ElementDeJeu implements Deplaceable{
         System.out.println(getNom()+" est désormais à la position "+getPos().toString());
     }
     
-        public void deplacePerso(ArrayList<ElementDeJeu> elementsDeJeu, ArrayList<Point2D> positionsOccupees) {
+        public void deplacePerso(ArrayList<ElementDeJeu> elementsDeJeu, ArrayList<Point2D> positionsOccupees, int n) {
             
         Scanner input = new Scanner(System.in);
     
@@ -124,7 +124,7 @@ public abstract class Creature extends ElementDeJeu implements Deplaceable{
                 System.out.println("Veuillez choisir un nombre entre -1 et 1 ou le déplacement horizontal");
                 String choix = input.nextLine();
                 dx = Integer.parseInt(choix);
-                if (this.getPos().getX()+dx<0){
+                if ((this.getPos().getX()+dx<0) || (this.getPos().getX()+dx >= n)){
                     System.out.println("Vous ne pouvez pas vous déplacer dans cette direction, vous êtes au bord du monde");
                     
                 }
@@ -134,12 +134,12 @@ public abstract class Creature extends ElementDeJeu implements Deplaceable{
                 
                 dy = Integer.parseInt(choix);
                 
-                if (this.getPos().getY()+dy<0){
+                if ((this.getPos().getY()+dy<0) || (this.getPos().getY()+dy >= n)){
                     System.out.println("Vous ne pouvez pas vous déplacer dans cette direction, vous êtes au bord du monde");
                     
                 }
                 
-            }while((dx==0&&dy==0)||(this.getPos().getX()+dx<0||this.getPos().getY()+dy<0));
+            }while((dx==0&&dy==0)||(this.getPos().getX()+dx<0||this.getPos().getY()+dy<0||this.getPos().getX()+dx >= n||this.getPos().getY()+dy >= n));
             for(ElementDeJeu elementDeJeu:elementsDeJeu){
                 if(elementDeJeu.getPos().equals(new Point2D(this.getPos().getX()+dx,this.getPos().getY()+dy))){
                     positionOccupee=true;

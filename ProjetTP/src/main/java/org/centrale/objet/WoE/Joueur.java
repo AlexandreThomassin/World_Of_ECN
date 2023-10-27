@@ -72,7 +72,7 @@ public class Joueur {
         System.out.println(this.getPersonnage().getNom()+" est initialement à la position "+this.getPersonnage().getPos().toString());
     }
     public void faireChoix(ArrayList<Point2D> positionsOccupees, ArrayList<ElementDeJeu> creatures,
-                           ArrayList<Objet> objets){
+                           ArrayList<Objet> objets, int n){
         Scanner input = new Scanner(System.in);
         System.out.println("Vous voulez vous déplacer, combattre ou activer un objet de l'inventaire?\n Saisissez 'Combattre'" +
                 "ou 'Se deplacer' ou 'Activer effet'");
@@ -98,7 +98,7 @@ public class Joueur {
             }
 
         }else if(choix.equals("Se deplacer")){
-            personnage.deplacePerso(creatures, positionsOccupees);
+            personnage.deplacePerso(creatures, positionsOccupees, n);
             personnage.checkCase(objets);
         }else{
             System.out.println("Vous avez choisi d'activer un objet de l'inventaire!");

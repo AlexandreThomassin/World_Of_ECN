@@ -31,7 +31,7 @@ public class World {
     /**Tailledu monde*/
     private static int n= 11;
     /**Modélise le nombre de chaque catégorie de créatures (34 pour Archer voir boucle for)*/
-    private static final int nb= 5;
+    private static final int nb= 2;
     /**notre Archer Robin*/
     private Archer robin;
     /**notre Paysan Peon*/
@@ -133,8 +133,8 @@ public class World {
     }
     void tourDeJeu(Joueur joueur){
         displayWorld();
-        System.out.println("---------------");
-        joueur.faireChoix(positionsOccupees,creatures,objets);
+        System.out.println("-----------------------");
+        joueur.faireChoix(positionsOccupees,creatures,objets, this.n);
         joueur.utiliseEffets();
     }
     
@@ -407,7 +407,7 @@ public class World {
         display += ("| " + "+ ".repeat(this.n) + "| \n").repeat(this.n);
         display += "- ".repeat(this.n+2) + "\n";
         
-        display += "Légende :\nP: Paysan | G: Guerrier | A: Archer\nW: Loup | L: Lapin | S: Epee\nF: Nourriture | H: Potion de Soin";
+        display += "Légende :\nP: Paysan     | G: Guerrier         | A: Archer\nW: Loup       | L: Lapin            | S: Epee\nF: Nourriture | H: Potion de Soin";
         
         StringBuilder disp = new StringBuilder(display); 
         
